@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Fly-Brain Trader · Study 2: niche markets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb;
+  --accent: #2a78d6; --accent-soft: #e6effa; --code-bg: #f1f4f2; --nav-bg: rgba(246,248,247,.92);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb; --fly: #2a78d6; --pain: #eb6834; --bench: #8b9590; --fail: #b4442c; --fail-bg: #fbeee9; --ok: #2c7a4b; --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif; --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --warn: #8a6100; --warn-bg: #fbf3df; --short: #eb6834; --ok-bg: #e7f4ec; 
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--f-body); }
+#study2 .wrap{ max-width: 880px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 40px; }
+#study2 h1, #study2 h2{ font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+#study2 h1{ font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
+#study2 h2{ font-size: 22px; font-weight: 700; }
+#study2 p{ margin: 0; max-width: 66ch; }
+#study2 .eyebrow{ font: 600 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+#study2 section{ display: flex; flex-direction: column; gap: 14px; }
+#study2 .lede{ color: var(--ink-2); font-size: 17px; }
+#study2 .verdict{ background: var(--warn-bg); border: 1px solid color-mix(in srgb, var(--warn) 35%, transparent);
+  border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+#study2 .verdict .big{ font: 700 24px/1.25 var(--f-display); color: var(--warn); }
+#study2 .stats{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+#study2 .stat{ display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+#study2 .stat b{ font: 600 22px var(--f-mono); font-variant-numeric: tabular-nums; }
+#study2 .stat span{ font-size: 13px; color: var(--ink-2); line-height: 1.35; }
+@media (max-width: 640px){
+#study2 .stats{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#study2 .panel{ background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; min-width: 0; }
+#study2 .chart{ position: relative; width: 100%; }
+#study2 .chart svg{ display: block; width: 100%; height: auto; overflow: visible; }
+#study2 .legend{ display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
+#study2 .legend i{ display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+#study2 .caption{ font-size: 14px; color: var(--ink-2); }
+#study2 .tip{ position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 6px 9px; font: 12px/1.45 var(--f-mono); color: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,.12); white-space: nowrap; transform: translate(-50%, -110%); }
+#study2 .tablewrap{ overflow-x: auto; }
+#study2 table{ border-collapse: collapse; width: 100%; font-size: 14px; min-width: 720px; }
+#study2 th, #study2 td{ text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+#study2 th{ font: 600 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+#study2 td.n{ font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+#study2 tr.group td{ font: 600 12px var(--f-mono); color: var(--ink-3); background: var(--grid); letter-spacing: .04em; }
+#study2 .pill{ display: inline-block; font: 600 11px var(--f-mono); padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+#study2 .pill.no{ color: var(--fail); background: var(--fail-bg); }
+#study2 .pill.maybe{ color: var(--warn); background: var(--warn-bg); }
+#study2 ul{ margin: 0; padding-left: 20px; max-width: 66ch; display: flex; flex-direction: column; gap: 8px; }
+#study2 .two{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 700px){
+#study2 .two{ grid-template-columns: 1fr; }
+}
+#study2 .axis text{ font: 11px var(--f-mono); fill: var(--ink-3); }
+#study2 .bars{ display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+#study2 .bar{ display: grid; grid-template-columns: 150px 1fr 64px; gap: 10px; align-items: center; }
+#study2 .bar .track{ position: relative; height: 12px; }
+#study2 .bar .fill{ position: absolute; top: 0; height: 12px; border-radius: 3px; }
+#study2 .bar .zero{ position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--ink-3); }
+#study2 .bar .v{ font-family: var(--f-mono); text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px){
+#study2 .bar{ grid-template-columns: 110px 1fr 56px; }
+}
+
+</style>
+<p style="max-width:900px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left,0px)) 0;font-size:14px"><a href="index.html" style="color:var(--fly)">&larr; All studies</a></p>
+<div id="study2"><div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:12px">
+    <div class="eyebrow">Pain/happiness fly brain · niche markets · blind test Jan 2024 – Oct 2026</div>
+    <h1>Fly-Brain Niche Markets Test</h1>
+    <p class="lede">Two long-only strategies built for the pain/happiness model were tested on four under-followed markets, with realistic costs. Settings were locked on 2022–23 data, then the fly traded 2024–26 blind. Every result is judged against the market and against a random picker following identical rules.</p>
+  </header>
+
+  <div class="verdict">
+    <div class="eyebrow" style="color:var(--warn)">Verdict</div>
+    <div class="big">No strategy is viable in any market. One hint of real skill, in Tokyo, doesn't survive correction for testing eight combinations.</div>
+    <p>The Tokyo stock picker beat the market by <b id="study2-v-tex"></b> a year after costs, and beat random picking (p = <b id="study2-v-tp"></b>). Across 8 tests, that p-value becomes <b id="study2-v-holm"></b> after correction. It deserves a live paper-trading test, not money.</p>
+    <div class="stats" id="study2-stats"></div>
+  </div>
+
+  <section>
+    <div class="eyebrow">The two strategies</div>
+    <h2>Built for slow, costly markets</h2>
+    <div class="two">
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">A · Slow picker</div>
+        <p class="caption">Every week the fly scores every tradeable stock and holds its top 20. It only sells a holding once it drops out of the top 60, so typical holds last months. <b>Happiness/pain</b> is each holding's weekly return relative to the market, minus the costs it caused.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">B · Shock rebound</div>
+        <p class="caption">When a stock crashes on its own (a move worse than 2.5 standard deviations below its market), the fly decides whether to buy at the next open and hold for 10 days. Shocks it skips still teach it, through weaker "what if" dopamine.</p></div>
+    </div>
+    <p class="caption">Both are long-only because short-selling is banned or impractical in these markets. Costs per trade are half the live quoted spread, plus the price impact of a $10,000 order, plus a 0.10% commission. Vietnam also charges a 0.1% tax on sales. Only stocks trading at least $100,000 a day are tradeable.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Results · 8 pre-registered tests</div>
+    <h2>Only the Tokyo picker came out ahead</h2>
+    <div class="panel tablewrap"><table id="study2-tbl"></table></div>
+    <p class="caption"><b>Viability:</b> did it beat an equal-weight portfolio of all tradeable stocks after costs? (one-sided Newey–West t-test). <b>Model edge:</b> did the fly beat a random picker that made the same number of trades on the same dates? (permutation test, 2,000–5,000 random runs). Corrected p-values use the Holm method across the 8 tests in each column.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Strategy A · value vs the market</div>
+    <h2>The picker against each market, after costs</h2>
+    <div class="panel">
+      <div class="legend" id="study2-leg"></div>
+      <div class="chart" id="study2-c-rel"></div>
+    </div>
+    <p class="caption">Value of the fly's portfolio divided by the market's (1.0 = level with the market). Above 1 means the fly is ahead. The UK picker roughly matched its market before costs and was then eaten by spreads. The Vietnam and Nordic pickers lost even before costs.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Tokyo · model edge</div>
+    <h2>Tokyo's picker beat almost every random picker</h2>
+    <div class="panel">
+      <div class="legend"><span><i style="background:var(--bench)"></i>Excess return of 2,000 random pickers with the same trade schedule</span><span><i style="background:var(--s1)"></i>Fly</span></div>
+      <div class="chart" id="study2-c-hist"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Exploratory checks (not pre-registered)</div>
+    <h2>Is Tokyo's result real, or something simpler?</h2>
+    <div class="two">
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+        <div class="eyebrow">10 differently wired brains</div>
+        <div class="chart" id="study2-c-seeds"></div>
+        <p class="caption">Every wiring beat random picking at p &lt; 0.05 (range <span id="study2-seed-range"></span>). So the result isn't luck in how the brain was wired. All ten learned from the same 2016–23 history, so this does not rule out luck in the period itself.</p>
+      </div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+        <div class="eyebrow">What the fly learned to hold</div>
+        <div class="bars" id="study2-tilts"></div>
+        <p class="caption">Average factor score of its holdings minus the market's, in standard-deviation units. It drifted toward quiet, low-volatility stocks near their 52-week highs and away from lottery-like spikers. These are textbook anomalies: the low-volatility effect, the MAX effect and the 52-week-high effect.</p>
+      </div>
+    </div>
+    <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+      <div class="eyebrow">Simple rules on the same schedule, Tokyo 2024–26, after costs</div>
+      <div class="bars" id="study2-baselines"></div>
+      <p class="caption">Each rule holds the top 20 stocks by one factor, with the direction chosen on 2016–23 data, using the same weekly schedule and costs. The best single factor made about 0.5% a year. A hand-built mix of the fly's three main tilts made 0.9%. The fly made <span id="study2-fly-ex2"></span>, so it did more than copy one factor. That is still one market over under three years.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Read before trusting anything here</div>
+    <h2>Limits and disclosures</h2>
+    <ul>
+      <li><b>Peek during debugging:</b> an early version of the picker was run once on Vietnam's 2024–26 data before the design was final. The only change afterwards was letting validation choose a slower trading pace, which validation costs already justified. Vietnam's picker still lost.</li>
+      <li><b>Bug fix:</b> the shock-rebound benchmark first averaged log returns, which flattered it slightly. It was corrected and everything was rerun. The conclusions didn't change.</li>
+      <li><b>Survivorship:</b> stocks were sampled from today's listings, so companies that went bust before today are missing. That flatters the markets and shock-buying. It affects the fly and the random pickers equally.</li>
+      <li><b>Costs use today's spreads</b> for the whole history. Nordic and UK small caps often raise money through deeply discounted share issues that free price data records as crashes, so those two markets are noisier.</li>
+      <li>"Tokyo small caps", "First North" and "AIM" are approximated by market-cap cut-offs, because the data source doesn't label exchange segments.</li>
+      <li>Settings were chosen across all four markets together, from 4 picker and 6 rebound options. Every option lost money on validation.</li>
+    </ul>
+  </section>
+</div>
+
+</div>
+<script>
+(() => {
+
+const D = {"test": {"vietnam": {"A": {"n_weeks": 146, "excess_ann": -0.08950526014393533, "excess_week": -0.0017758980187288756, "nw_t": -1.9702773605444988, "p_viability": 0.9755967041882698, "p_edge": 0.696151924037981, "null_mean_ann": -0.07077644213522835, "null_p95_ann": -0.012024004468099946, "net_total": -0.1606265018661508, "mkt_total": 0.09760714296228401, "gross_excess_ann": -0.014808927008764317, "turnover_per_rebalance": 0.18595890410958904, "avg_k": 20.0, "avg_eligible": 132.4931506849315}, "B": {"n_events": 572, "n_trades": 61, "trades_per_month": 5.083333333333333, "excess_per_trade": -0.06088885392990558, "gross_excess_per_trade": -0.04730009823330342, "avg_cost": 0.013588755696602164, "hit": 0.39344262295081966, "buy_all_excess": -0.020224821626686148, "nw_t": -2.441865116776197, "p_viability": 0.9926941976379392, "p_edge": 0.16276744651069786, "null_mean": -0.06729495229529826, "null_p95": -0.05748120695499288}}, "tokyo": {"A": {"n_weeks": 136, "excess_ann": 0.04949231976111414, "excess_week": 0.0009819904714506774, "nw_t": 0.7579766229279055, "p_viability": 0.2242324888042474, "p_edge": 0.02848575712143928, "null_mean_ann": -0.0762250200502717, "null_p95_ann": 0.03110858275256556, "net_total": 0.24126366709973834, "mkt_total": 0.05553677058687745, "gross_excess_ann": 0.11783944423590016, "turnover_per_rebalance": 0.12316176470588236, "avg_k": 20.0, "avg_eligible": 188.00735294117646}, "B": {"n_events": 1312, "n_trades": 78, "trades_per_month": 5.2, "excess_per_trade": -0.022867193373067654, "gross_excess_per_trade": -0.013032349189967816, "avg_cost": 0.009834844183099834, "hit": 0.3717948717948718, "buy_all_excess": -0.0211098554033066, "nw_t": -1.7770209068439125, "p_viability": 0.962217599965229, "p_edge": 0.854629074185163, "null_mean": -0.013444943551102102, "null_p95": 0.0023977729084297726}}, "nordic": {"A": {"n_weeks": 141, "excess_ann": -0.05871424472473012, "excess_week": -0.0011649651731097247, "nw_t": -0.9852788090067391, "p_viability": 0.837756430610914, "p_edge": 0.6991504247876063, "null_mean_ann": -0.027811222526182115, "null_p95_ann": 0.07088056118798483, "net_total": -0.5207640806589937, "mkt_total": -0.42144132550743607, "gross_excess_ann": -0.022044353162893195, "turnover_per_rebalance": 0.04086647225768496, "avg_k": 17.93617021276596, "avg_eligible": 54.829787234042556}, "B": {"n_events": 341, "n_trades": 50, "trades_per_month": 2.380952380952381, "excess_per_trade": -0.01844808758507209, "gross_excess_per_trade": -0.0047468712989859, "avg_cost": 0.013701216286086181, "hit": 0.38, "buy_all_excess": -0.024806182158845107, "nw_t": -0.7098739686035993, "p_viability": 0.7611088528310341, "p_edge": 1.0, "null_mean": -0.017334478465881997, "null_p95": -0.015953663379993002}}, "aim": {"A": {"n_weeks": 142, "excess_ann": -0.13595834111708832, "excess_week": -0.0026975861332755617, "nw_t": -2.1012238796305804, "p_viability": 0.9821893409338787, "p_edge": 0.5757121439280359, "null_mean_ann": -0.11707196580062304, "null_p95_ann": 0.013421058532459177, "net_total": -0.34976078254142806, "mkt_total": -0.04654009011536275, "gross_excess_ann": 0.002272744112118698, "turnover_per_rebalance": 0.05739436619718309, "avg_k": 20.0, "avg_eligible": 79.32394366197182}, "B": {"n_events": 639, "n_trades": 73, "trades_per_month": 3.8421052631578947, "excess_per_trade": -0.022435719114174017, "gross_excess_per_trade": 0.008589240807539597, "avg_cost": 0.031024959921713613, "hit": 0.3287671232876712, "buy_all_excess": -0.03145700419541474, "nw_t": -2.3563619813376206, "p_viability": 0.9907725378685236, "p_edge": 0.057788442311537694, "null_mean": -0.030693270920924942, "null_p95": -0.022145639272505437}}}, "holm_v": {"vietnam_A": 1.0, "vietnam_B": 1.0, "tokyo_A": 1.0, "tokyo_B": 1.0, "nordic_A": 1.0, "nordic_B": 1.0, "aim_A": 1.0, "aim_B": 1.0}, "holm_e": {"vietnam_A": 1.0, "vietnam_B": 0.9766046790641871, "tokyo_A": 0.22788605697151423, "tokyo_B": 1.0, "nordic_A": 1.0, "nordic_B": 1.0, "aim_A": 1.0, "aim_B": 0.40451909618076387}, "lockedA": {"lr": 0.01, "step": 5, "keep_mult": 3, "val_t": -0.04573289466307051}, "lockedB": {"lr": 0.03, "theta": 0.0, "val_t": -3.114990898725493}, "valA": [{"lr": 0.01, "step": 5, "keep_mult": 3, "val_t": -0.04573289466307051}, {"lr": 0.01, "step": 20, "keep_mult": 2, "val_t": -0.754305836581442}, {"lr": 0.03, "step": 5, "keep_mult": 3, "val_t": -0.3022325654773681}, {"lr": 0.03, "step": 20, "keep_mult": 2, "val_t": -0.5925004577280052}], "valB": [{"lr": 0.01, "theta": 0.0, "val_t": -3.1882781173002672}, {"lr": 0.01, "theta": 0.5, "val_t": -5.122441453469683}, {"lr": 0.01, "theta": 1.0, "val_t": -5.394470652070675}, {"lr": 0.03, "theta": 0.0, "val_t": -3.114990898725493}, {"lr": 0.03, "theta": 0.5, "val_t": -3.8449548389077233}, {"lr": 0.03, "theta": 1.0, "val_t": -5.292398077008305}], "checks": {"seeds": [{"seed": 0, "excess_ann": 0.04949231976111414, "p_edge": 0.029970029970029972, "p_viability": 0.2242324888042474}, {"seed": 1, "excess_ann": 0.057034377479083645, "p_edge": 0.022977022977022976, "p_viability": 0.1721754193045334}, {"seed": 2, "excess_ann": 0.0486148062467522, "p_edge": 0.03296703296703297, "p_viability": 0.192133291946326}, {"seed": 3, "excess_ann": 0.0807500624216232, "p_edge": 0.01098901098901099, "p_viability": 0.08707152882483049}, {"seed": 4, "excess_ann": 0.052411027284962296, "p_edge": 0.029970029970029972, "p_viability": 0.19459920316959944}, {"seed": 5, "excess_ann": 0.10006661137590227, "p_edge": 0.001998001998001998, "p_viability": 0.0936309543181042}, {"seed": 6, "excess_ann": 0.059377141718373015, "p_edge": 0.016983016983016984, "p_viability": 0.1639118000316615}, {"seed": 7, "excess_ann": 0.04948257684232012, "p_edge": 0.01998001998001998, "p_viability": 0.19152637864113586}, {"seed": 8, "excess_ann": 0.06410390232450487, "p_edge": 0.016983016983016984, "p_viability": 0.15172503280669514}, {"seed": 9, "excess_ann": 0.05390227491095577, "p_edge": 0.015984015984015984, "p_viability": 0.17564901503114472}], "baselines": [{"factor": "mom_12_1", "direction": "low", "excess_ann": -0.13394837453891342}, {"factor": "rev_1m", "direction": "low", "excess_ann": -0.2525525408179827}, {"factor": "rev_1w", "direction": "low", "excess_ann": -0.5291041365992719}, {"factor": "high_52w", "direction": "high", "excess_ann": -0.11347754841818247}, {"factor": "vol_60", "direction": "low", "excess_ann": 0.0047389465305841105}, {"factor": "max_21", "direction": "low", "excess_ann": -0.01690984677173372}, {"factor": "illiq", "direction": "high", "excess_ann": -0.08871812821773385}, {"factor": "volu_trend", "direction": "low", "excess_ann": -0.3263384536259008}, {"factor": "ma200", "direction": "low", "excess_ann": -0.20915240223417486}, {"factor": "resid_3m", "direction": "low", "excess_ann": -0.19448925429212102}, {"factor": "zero_days", "direction": "high", "excess_ann": -0.06539907062099165}], "tilts": {"mom_12_1": 0.054699435302714705, "rev_1m": -0.09264429375347016, "rev_1w": -0.021400674703523876, "high_52w": 0.618539086745925, "vol_60": -1.0710664670073062, "max_21": -1.013143447417706, "illiq": 0.1326289271215508, "volu_trend": 0.02252158851966832, "ma200": 0.019775528353560497, "resid_3m": -0.014023951782907296, "zero_days": 0.42229028221585957, "mkt_1m": -1.0791000446149844e-17}, "textbook_composite": {"n_weeks": 136, "excess_ann": 0.00906530252687587, "excess_week": 0.0001798671136284895, "nw_t": 0.12401334621495441, "p_viability": 0.4506523539434878, "p_edge": 0.25274725274725274, "null_mean_ann": -0.03230984912935885, "null_p95_ann": 0.07148250219600646, "net_total": 0.12199083754392337, "mkt_total": 0.05553677058687745, "gross_excess_ann": 0.02235644121348924, "turnover_per_rebalance": 0.03235294117647059, "avg_k": 20.0, "avg_eligible": 188.00735294117646}}, "curves": {"vietnam": {"dates": ["2024-01-01", "2024-01-08", "2024-01-15", "2024-01-22", "2024-01-29", "2024-02-05", "2024-02-12", "2024-02-19", "2024-02-26", "2024-03-04", "2024-03-11", "2024-03-18", "2024-03-25", "2024-04-01", "2024-04-08", "2024-04-15", "2024-04-22", "2024-04-29", "2024-05-06", "2024-05-13", "2024-05-20", "2024-05-27", "2024-06-03", "2024-06-10", "2024-06-17", "2024-06-24", "2024-07-01", "2024-07-08", "2024-07-15", "2024-07-22", "2024-07-29", "2024-08-05", "2024-08-12", "2024-08-19", "2024-08-26", "2024-09-02", "2024-09-09", "2024-09-16", "2024-09-23", "2024-09-30", "2024-10-07", "2024-10-14", "2024-10-21", "2024-10-28", "2024-11-04", "2024-11-11", "2024-11-18", "2024-11-25", "2024-12-02", "2024-12-09", "2024-12-16", "2024-12-23", "2024-12-30", "2025-01-06", "2025-01-13", "2025-01-20", "2025-01-27", "2025-02-03", "2025-02-10", "2025-02-17", "2025-02-24", "2025-03-03", "2025-03-10", "2025-03-17", "2025-03-24", "2025-03-31", "2025-04-07", "2025-04-14", "2025-04-21", "2025-04-28", "2025-05-05", "2025-05-12", "2025-05-19", "2025-05-26", "2025-06-02", "2025-06-09", "2025-06-16", "2025-06-23", "2025-06-30", "2025-07-07", "2025-07-14", "2025-07-21", "2025-07-28", "2025-08-04", "2025-08-11", "2025-08-18", "2025-08-25", "2025-09-01", "2025-09-08", "2025-09-15", "2025-09-22", "2025-09-29", "2025-10-06", "2025-10-13", "2025-10-20", "2025-10-27", "2025-11-03", "2025-11-10", "2025-11-17", "2025-11-24", "2025-12-01", "2025-12-08", "2025-12-15", "2025-12-22", "2025-12-29", "2026-01-05", "2026-01-12", "2026-01-19", "2026-01-26", "2026-02-02", "2026-02-09", "2026-02-16", "2026-02-23", "2026-03-02", "2026-03-09", "2026-03-16", "2026-03-23", "2026-03-30", "2026-04-06", "2026-04-13", "2026-04-20", "2026-04-27", "2026-05-04", "2026-05-11", "2026-05-18", "2026-05-25", "2026-06-01", "2026-06-08", "2026-06-15", "2026-06-22", "2026-06-29", "2026-07-06", "2026-07-13", "2026-07-20", "2026-07-27", "2026-08-03", "2026-08-10", "2026-08-17", "2026-08-24", "2026-08-31", "2026-09-07", "2026-09-14", "2026-09-21", "2026-09-28", "2026-10-05", "2026-10-12"], "rel": [1.0046, 1.0028, 1.0036, 1.0111, 1.017, 1.0192, 1.0174, 1.0284, 1.0119, 1.0201, 1.0075, 1.0034, 1.0113, 1.0301, 1.0296, 1.0191, 1.0157, 1.0166, 1.0345, 1.0196, 1.0418, 1.0446, 1.0493, 1.0537, 1.0755, 1.0766, 1.0731, 1.0822, 1.0634, 1.0307, 1.0173, 1.017, 1.0057, 0.9901, 0.9858, 0.9829, 0.9902, 0.9808, 0.9692, 0.967, 0.9639, 0.9651, 0.959, 0.9346, 0.9276, 0.9189, 0.9289, 0.928, 0.9292, 0.9208, 0.9245, 0.9119, 0.9135, 0.9163, 0.914, 0.9131, 0.9134, 0.9153, 0.9195, 0.9209, 0.9294, 0.9273, 0.9237, 0.9392, 0.9359, 0.9376, 0.9482, 0.9536, 0.9568, 0.9544, 0.9532, 0.9546, 0.9592, 0.9472, 0.9462, 0.9212, 0.9069, 0.9007, 0.9005, 0.9039, 0.9089, 0.8893, 0.8848, 0.883, 0.8971, 0.8672, 0.8671, 0.8455, 0.8439, 0.8218, 0.817, 0.8053, 0.806, 0.7987, 0.8039, 0.8172, 0.8136, 0.8039, 0.8034, 0.805, 0.7935, 0.8026, 0.792, 0.7972, 0.7987, 0.803, 0.7952, 0.7915, 0.8054, 0.81, 0.7968, 0.7943, 0.7866, 0.7798, 0.7919, 0.7859, 0.7864, 0.7957, 0.7924, 0.7894, 0.7962, 0.7941, 0.7805, 0.7763, 0.7862, 0.7942, 0.7901, 0.7999, 0.7899, 0.7851, 0.7887, 0.786, 0.7772, 0.7827, 0.7842, 0.7743, 0.7743, 0.771, 0.7692, 0.7669, 0.7706, 0.7675, 0.7608, 0.7667, 0.7604, 0.7647]}, "tokyo": {"dates": ["2024-01-04", "2024-01-12", "2024-01-19", "2024-01-26", "2024-02-02", "2024-02-09", "2024-02-19", "2024-02-27", "2024-03-05", "2024-03-12", "2024-03-19", "2024-03-27", "2024-04-03", "2024-04-10", "2024-04-17", "2024-04-24", "2024-05-02", "2024-05-13", "2024-05-20", "2024-05-27", "2024-06-03", "2024-06-10", "2024-06-17", "2024-06-24", "2024-07-01", "2024-07-08", "2024-07-16", "2024-07-23", "2024-07-30", "2024-08-06", "2024-08-14", "2024-08-21", "2024-08-28", "2024-09-04", "2024-09-11", "2024-09-19", "2024-09-27", "2024-10-04", "2024-10-11", "2024-10-21", "2024-10-28", "2024-11-05", "2024-11-12", "2024-11-19", "2024-11-26", "2024-12-03", "2024-12-10", "2024-12-17", "2024-12-24", "2025-01-06", "2025-01-14", "2025-01-21", "2025-01-28", "2025-02-04", "2025-02-12", "2025-02-19", "2025-02-27", "2025-03-06", "2025-03-13", "2025-03-21", "2025-03-28", "2025-04-04", "2025-04-11", "2025-04-18", "2025-04-25", "2025-05-07", "2025-05-14", "2025-05-21", "2025-05-28", "2025-06-04", "2025-06-11", "2025-06-18", "2025-06-25", "2025-07-02", "2025-07-09", "2025-07-16", "2025-07-24", "2025-07-31", "2025-08-07", "2025-08-15", "2025-08-22", "2025-08-29", "2025-09-05", "2025-09-12", "2025-09-22", "2025-09-30", "2025-10-07", "2025-10-15", "2025-10-22", "2025-10-29", "2025-11-06", "2025-11-13", "2025-11-20", "2025-11-28", "2025-12-05", "2025-12-12", "2025-12-19", "2025-12-26", "2026-01-07", "2026-01-15", "2026-01-22", "2026-01-29", "2026-02-05", "2026-02-13", "2026-02-20", "2026-03-02", "2026-03-09", "2026-03-16", "2026-03-24", "2026-03-31", "2026-04-07", "2026-04-14", "2026-04-21", "2026-04-28", "2026-05-11", "2026-05-18", "2026-05-25", "2026-06-01", "2026-06-08", "2026-06-15", "2026-06-22", "2026-06-29", "2026-07-06", "2026-07-13", "2026-07-21", "2026-07-28", "2026-08-04", "2026-08-12", "2026-08-19", "2026-08-26", "2026-09-02", "2026-09-09", "2026-09-16", "2026-09-28", "2026-10-05", "2026-10-13"], "rel": [1.0033, 1.0157, 0.9982, 1.0135, 0.9984, 0.9773, 0.9534, 0.9486, 0.9584, 0.9704, 0.9851, 0.9916, 0.99, 1.0, 1.0012, 1.0107, 1.0007, 0.9975, 1.0122, 1.0145, 0.9946, 0.9842, 0.9935, 1.0002, 0.9959, 0.9836, 1.006, 1.006, 1.0893, 1.0571, 1.0294, 1.0236, 1.0169, 1.0287, 1.0196, 1.0151, 1.0331, 1.0372, 1.0232, 1.039, 1.0334, 1.0289, 1.0276, 1.0213, 1.0309, 1.0303, 1.0372, 1.041, 1.0482, 1.0373, 1.0409, 1.0319, 1.0236, 1.0043, 0.9937, 1.0093, 1.0278, 1.0291, 1.0162, 1.0303, 1.0771, 1.063, 1.0523, 1.0637, 1.0469, 1.0273, 1.0069, 0.9974, 0.9936, 0.9803, 0.9681, 0.966, 0.9938, 0.9602, 0.971, 0.9725, 0.9727, 0.9798, 0.9649, 0.9358, 0.9303, 0.9384, 0.9469, 0.9409, 0.9565, 0.9522, 0.966, 0.9613, 0.9856, 0.9946, 0.9881, 1.0073, 1.0051, 1.0225, 1.0322, 1.0385, 1.0411, 1.0199, 1.0059, 1.0156, 1.0071, 1.0323, 1.0323, 1.0467, 1.0461, 1.048, 1.0356, 1.0487, 1.0521, 1.0557, 1.0408, 1.0297, 1.0363, 1.0294, 1.0959, 1.101, 1.1199, 1.1326, 1.16, 1.1472, 1.179, 1.1544, 1.1793, 1.1906, 1.2198, 1.2019, 1.1992, 1.1915, 1.18, 1.1727, 1.1632, 1.173, 1.1722, 1.1519, 1.1625, 1.176]}, "nordic": {"dates": ["2024-01-02", "2024-01-09", "2024-01-16", "2024-01-23", "2024-01-30", "2024-02-06", "2024-02-13", "2024-02-20", "2024-02-27", "2024-03-05", "2024-03-12", "2024-03-19", "2024-03-26", "2024-04-04", "2024-04-11", "2024-04-18", "2024-04-25", "2024-05-03", "2024-05-13", "2024-05-20", "2024-05-27", "2024-06-03", "2024-06-10", "2024-06-17", "2024-06-25", "2024-07-02", "2024-07-09", "2024-07-16", "2024-07-23", "2024-07-30", "2024-08-06", "2024-08-13", "2024-08-20", "2024-08-27", "2024-09-03", "2024-09-10", "2024-09-17", "2024-09-24", "2024-10-01", "2024-10-08", "2024-10-15", "2024-10-22", "2024-10-29", "2024-11-05", "2024-11-12", "2024-11-19", "2024-11-26", "2024-12-03", "2024-12-10", "2024-12-17", "2024-12-27", "2025-01-08", "2025-01-15", "2025-01-22", "2025-01-29", "2025-02-05", "2025-02-12", "2025-02-19", "2025-02-26", "2025-03-05", "2025-03-12", "2025-03-19", "2025-03-26", "2025-04-02", "2025-04-09", "2025-04-16", "2025-04-25", "2025-05-05", "2025-05-12", "2025-05-19", "2025-05-26", "2025-06-03", "2025-06-10", "2025-06-17", "2025-06-25", "2025-07-02", "2025-07-09", "2025-07-16", "2025-07-23", "2025-07-30", "2025-08-06", "2025-08-13", "2025-08-20", "2025-08-27", "2025-09-03", "2025-09-10", "2025-09-17", "2025-09-24", "2025-10-01", "2025-10-08", "2025-10-15", "2025-10-22", "2025-10-29", "2025-11-05", "2025-11-12", "2025-11-19", "2025-11-26", "2025-12-03", "2025-12-10", "2025-12-17", "2025-12-29", "2026-01-08", "2026-01-15", "2026-01-22", "2026-01-29", "2026-02-05", "2026-02-12", "2026-02-19", "2026-02-26", "2026-03-05", "2026-03-12", "2026-03-19", "2026-03-26", "2026-04-02", "2026-04-13", "2026-04-20", "2026-04-27", "2026-05-05", "2026-05-12", "2026-05-20", "2026-05-27", "2026-06-03", "2026-06-10", "2026-06-17", "2026-06-25", "2026-07-02", "2026-07-09", "2026-07-16", "2026-07-23", "2026-07-30", "2026-08-06", "2026-08-13", "2026-08-20", "2026-08-27", "2026-09-03", "2026-09-10", "2026-09-17", "2026-09-24", "2026-10-01", "2026-10-08", "2026-10-15"], "rel": [1.0147, 1.0148, 1.0048, 1.0142, 1.0304, 1.0393, 0.9991, 0.9679, 0.9621, 0.9279, 0.9447, 0.9598, 0.9594, 0.9667, 0.9441, 0.9421, 0.9368, 0.9465, 0.9442, 0.9597, 0.9644, 0.9674, 0.9873, 0.9761, 0.9894, 0.9929, 0.9708, 0.9609, 0.9718, 0.9577, 0.9592, 0.9611, 0.9677, 0.9559, 0.9588, 0.9312, 0.9406, 0.9493, 0.9497, 0.9552, 0.9457, 0.9628, 0.9562, 0.9614, 1.0012, 1.0293, 0.9761, 0.9658, 0.9677, 0.9823, 0.9703, 0.9547, 0.956, 0.9526, 0.9487, 0.9371, 0.9602, 0.935, 0.9112, 0.8884, 0.8875, 0.895, 0.8827, 0.8905, 0.8802, 0.8747, 0.8852, 0.8893, 0.8831, 0.8902, 0.8942, 0.8866, 0.8989, 0.8933, 0.9193, 0.9186, 0.922, 0.9461, 0.9488, 0.9258, 0.9287, 0.9228, 0.9317, 0.9268, 0.9198, 0.895, 0.879, 0.9005, 0.9, 0.881, 0.8742, 0.8801, 0.8989, 0.8886, 0.899, 0.8741, 0.886, 0.8759, 0.8766, 0.8669, 0.8496, 0.8449, 0.8402, 0.8132, 0.8112, 0.8166, 0.8097, 0.7977, 0.8016, 0.791, 0.7968, 0.7889, 0.7914, 0.8149, 0.8161, 0.8449, 0.8337, 0.8503, 0.8441, 0.8575, 0.8488, 0.8592, 0.8498, 0.8391, 0.8474, 0.833, 0.8473, 0.8425, 0.8525, 0.8514, 0.8434, 0.8392, 0.8447, 0.8369, 0.8382, 0.8524, 0.8396, 0.8508, 0.8435, 0.8404, 0.8283]}, "aim": {"dates": ["2024-01-02", "2024-01-09", "2024-01-16", "2024-01-23", "2024-01-30", "2024-02-06", "2024-02-13", "2024-02-20", "2024-02-27", "2024-03-05", "2024-03-12", "2024-03-19", "2024-03-26", "2024-04-04", "2024-04-11", "2024-04-18", "2024-04-25", "2024-05-02", "2024-05-10", "2024-05-17", "2024-05-24", "2024-06-03", "2024-06-10", "2024-06-17", "2024-06-24", "2024-07-01", "2024-07-08", "2024-07-15", "2024-07-22", "2024-07-29", "2024-08-05", "2024-08-12", "2024-08-19", "2024-08-27", "2024-09-03", "2024-09-10", "2024-09-17", "2024-09-24", "2024-10-01", "2024-10-08", "2024-10-15", "2024-10-22", "2024-10-29", "2024-11-05", "2024-11-12", "2024-11-19", "2024-11-26", "2024-12-03", "2024-12-10", "2024-12-17", "2024-12-24", "2025-01-03", "2025-01-10", "2025-01-17", "2025-01-24", "2025-01-31", "2025-02-07", "2025-02-14", "2025-02-21", "2025-02-28", "2025-03-07", "2025-03-14", "2025-03-21", "2025-03-28", "2025-04-04", "2025-04-11", "2025-04-22", "2025-04-29", "2025-05-07", "2025-05-14", "2025-05-21", "2025-05-29", "2025-06-05", "2025-06-12", "2025-06-19", "2025-06-26", "2025-07-03", "2025-07-10", "2025-07-17", "2025-07-24", "2025-07-31", "2025-08-07", "2025-08-14", "2025-08-21", "2025-08-29", "2025-09-05", "2025-09-12", "2025-09-19", "2025-09-26", "2025-10-03", "2025-10-10", "2025-10-17", "2025-10-24", "2025-10-31", "2025-11-07", "2025-11-14", "2025-11-21", "2025-11-28", "2025-12-05", "2025-12-12", "2025-12-19", "2025-12-30", "2026-01-07", "2026-01-14", "2026-01-21", "2026-01-28", "2026-02-04", "2026-02-11", "2026-02-18", "2026-02-25", "2026-03-04", "2026-03-11", "2026-03-18", "2026-03-25", "2026-04-01", "2026-04-10", "2026-04-17", "2026-04-24", "2026-05-01", "2026-05-11", "2026-05-18", "2026-05-26", "2026-06-02", "2026-06-09", "2026-06-16", "2026-06-23", "2026-06-30", "2026-07-07", "2026-07-14", "2026-07-21", "2026-07-28", "2026-08-04", "2026-08-11", "2026-08-18", "2026-08-25", "2026-09-02", "2026-09-09", "2026-09-16", "2026-09-23", "2026-09-30", "2026-10-07", "2026-10-14"], "rel": [0.9679, 0.9931, 0.9874, 0.9184, 0.9055, 0.9133, 0.916, 0.9194, 0.9201, 0.9319, 0.9263, 0.9336, 0.9024, 0.8879, 0.9048, 0.8902, 0.8854, 0.8618, 0.8489, 0.8448, 0.8377, 0.8449, 0.8556, 0.8553, 0.8565, 0.8649, 0.8911, 0.9087, 0.9089, 0.9051, 0.8951, 0.882, 0.8885, 0.8849, 0.8676, 0.8455, 0.8562, 0.8653, 0.861, 0.8612, 0.8555, 0.8663, 0.8397, 0.8452, 0.8511, 0.8519, 0.8473, 0.8565, 0.8497, 0.858, 0.847, 0.8837, 0.9086, 0.9106, 0.9111, 0.906, 0.8967, 0.8987, 0.9036, 0.9007, 0.8982, 0.8818, 0.8646, 0.893, 0.8943, 0.8737, 0.874, 0.8682, 0.8486, 0.8461, 0.8334, 0.8338, 0.8194, 0.8466, 0.8463, 0.8601, 0.8708, 0.8749, 0.8539, 0.8439, 0.8326, 0.8364, 0.8418, 0.8228, 0.8067, 0.8191, 0.8165, 0.8098, 0.8003, 0.8008, 0.794, 0.7912, 0.7801, 0.7856, 0.7771, 0.7699, 0.7682, 0.7739, 0.7747, 0.7768, 0.7556, 0.76, 0.7572, 0.7433, 0.7457, 0.7411, 0.7479, 0.7522, 0.7449, 0.737, 0.7363, 0.7256, 0.723, 0.7304, 0.7329, 0.7384, 0.7307, 0.763, 0.7694, 0.7766, 0.7743, 0.7553, 0.7518, 0.7491, 0.7548, 0.7402, 0.7272, 0.7206, 0.7169, 0.7184, 0.7086, 0.6991, 0.6829, 0.6967, 0.7151, 0.6922, 0.696, 0.6832, 0.6757, 0.6892, 0.6866, 0.682]}}, "hist": {"counts": [1, 3, 5, 4, 9, 17, 14, 26, 36, 45, 60, 64, 83, 92, 123, 108, 116, 139, 133, 127, 118, 106, 119, 74, 71, 71, 53, 40, 36, 27, 24, 19, 11, 7, 5, 5, 5, 1, 1, 2], "edges": [-0.2644, -0.2543, -0.2442, -0.234, -0.2239, -0.2138, -0.2037, -0.1935, -0.1834, -0.1733, -0.1632, -0.153, -0.1429, -0.1328, -0.1227, -0.1125, -0.1024, -0.0923, -0.0822, -0.072, -0.0619, -0.0518, -0.0417, -0.0315, -0.0214, -0.0113, -0.0012, 0.009, 0.0191, 0.0292, 0.0393, 0.0495, 0.0596, 0.0697, 0.0798, 0.09, 0.1001, 0.1102, 0.1203, 0.1305, 0.1406], "observed": 0.04949231976111414}};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const pct = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(x * 100).toFixed(d) + "%";
+const fp = p => p == null || !isFinite(p) ? "–" : p < 0.001 ? "<0.001" : p.toFixed(3);
+const M = ["vietnam", "tokyo", "nordic", "aim"];
+const NAME = { vietnam: "Vietnam HOSE", tokyo: "Tokyo small caps", nordic: "Nordic small caps", aim: "UK small caps (AIM)" };
+const COL = { vietnam: "--s2", tokyo: "--s1", nordic: "--s3", aim: "--s4" };
+const T = D.test, tA = T.tokyo.A;
+
+document.getElementById("study2-v-tex").textContent = pct(tA.excess_ann);
+document.getElementById("study2-v-tp").textContent = fp(tA.p_edge);
+document.getElementById("study2-v-holm").textContent = fp(D.holm_e.tokyo_A);
+document.getElementById("study2-fly-ex2").textContent = pct(tA.excess_ann);
+const nViable = Object.values(D.holm_v).filter(p => p < 0.05).length;
+const nEdge = Object.values(D.holm_e).filter(p => p < 0.05).length;
+document.getElementById("study2-stats").innerHTML = [
+  [nViable + " / 8", "strategy–market pairs that beat the market (corrected)"],
+  [nEdge + " / 8", "pairs where the fly beat random picking (corrected)"],
+  [pct(tA.excess_ann), "Tokyo picker vs market per year, after costs"],
+  [pct(tA.gross_excess_ann), "Tokyo picker before costs; costs took the rest"],
+].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+
+// table
+const pill = p => p < 0.05 ? `<span class="pill maybe">yes</span>` : `<span class="pill no">no</span>`;
+let h = `<tr><th>Market</th><th>Return vs market, after costs</th><th>Before costs</th><th>Viability p (raw / corrected)</th><th>Edge vs random p (raw / corrected)</th><th>Edge?</th></tr>`;
+h += `<tr class="group"><td colspan="6">A · Slow picker (holds 20 stocks, weekly decisions)</td></tr>`;
+for (const m of M) { const r = T[m].A;
+  h += `<tr><td>${NAME[m]}</td><td class="n">${pct(r.excess_ann)} a year</td><td class="n">${pct(r.gross_excess_ann)}</td><td class="n">${fp(r.p_viability)} / ${fp(D.holm_v[m + "_A"])}</td><td class="n">${fp(r.p_edge)} / ${fp(D.holm_e[m + "_A"])}</td><td>${r.p_edge < 0.05 ? `<span class="pill maybe">raw only</span>` : pill(1)}</td></tr>`; }
+h += `<tr class="group"><td colspan="6">B · Shock rebound (buy after a crash, hold 10 days)</td></tr>`;
+for (const m of M) { const r = T[m].B;
+  h += `<tr><td>${NAME[m]}</td><td class="n">${pct(r.excess_per_trade)} per trade (${r.n_trades} trades)</td><td class="n">${pct(r.gross_excess_per_trade)}</td><td class="n">${fp(r.p_viability)} / ${fp(D.holm_v[m + "_B"])}</td><td class="n">${fp(r.p_edge)} / ${fp(D.holm_e[m + "_B"])}</td><td>${r.p_edge < 0.05 ? `<span class="pill maybe">raw only</span>` : pill(1)}</td></tr>`; }
+h += `<tr><td colspan="6" class="caption">After costs, buying every shock lost money in all four markets (${M.map(m => pct(T[m].B.buy_all_excess)).join(", ")} per trade), so crashed small caps kept underperforming instead of bouncing back.</td></tr>`;
+document.getElementById("study2-tbl").innerHTML = h;
+
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, a = {}, p) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+function ticks(lo, hi, n = 5) { const span = hi - lo, m = Math.pow(10, Math.floor(Math.log10(span / n)));
+  const s = [1, 2, 2.5, 5, 10].map(x => x * m).find(x => span / x <= n) || m * 10; const o = []; for (let v = Math.ceil(lo / s) * s; v <= hi + 1e-12; v += s) o.push(+v.toFixed(10)); return o; }
+
+function relChart() {
+  const box = document.getElementById("study2-c-rel"); box.innerHTML = "";
+  document.getElementById("study2-leg").innerHTML = M.map(m => `<span><i style="background:var(${COL[m]})"></i>${NAME[m]}</span>`).join("");
+  const W = 800, H = 300, mg = { l: 46, r: 120, t: 10, b: 28 };
+  const t0 = Date.parse("2024-01-01"), t1 = Date.parse("2026-10-31");
+  const all = M.flatMap(m => D.curves[m].rel); let lo = Math.min(...all, 1), hi = Math.max(...all, 1); const pad = (hi - lo) * .06; lo -= pad; hi += pad;
+  const sx = d => mg.l + (Date.parse(d) - t0) / (t1 - t0) * (W - mg.l - mg.r), sy = v => mg.t + (1 - (v - lo) / (hi - lo)) * (H - mg.t - mg.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box), ax = el("g", { class: "axis" }, svg);
+  for (const t of ticks(lo, hi)) { el("line", { x1: mg.l, x2: W - mg.r, y1: sy(t), y2: sy(t), stroke: css("--grid") }, ax); el("text", { x: mg.l - 8, y: sy(t) + 4, "text-anchor": "end" }, ax).textContent = t.toFixed(2); }
+  el("line", { x1: mg.l, x2: W - mg.r, y1: sy(1), y2: sy(1), stroke: css("--ink-3") }, ax);
+  for (const y of ["2024", "2025", "2026"]) el("text", { x: sx(y + "-01-01"), y: H - 8, "text-anchor": "middle" }, ax).textContent = y;
+  const ends = [];
+  for (const m of M) { const c = D.curves[m]; let d = ""; c.rel.forEach((v, i) => d += (i ? "L" : "M") + sx(c.dates[i]).toFixed(1) + "," + sy(v).toFixed(1));
+    el("path", { d, fill: "none", stroke: css(COL[m]), "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+    ends.push({ m, y: sy(c.rel[c.rel.length - 1]), v: c.rel[c.rel.length - 1], x: sx(c.dates[c.dates.length - 1]) }); }
+  ends.sort((a, b) => a.y - b.y); for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 15) ends[i].y = ends[i - 1].y + 15;
+  for (const e of ends) { el("circle", { cx: e.x, cy: sy(e.v), r: 4, fill: css(COL[e.m]), stroke: css("--panel"), "stroke-width": 2 }, svg);
+    const t = el("text", { x: e.x + 10, y: e.y + 4, fill: css("--ink-2"), "font-size": 12, "font-family": "var(--f-mono)" }, svg); t.textContent = NAME[e.m].split(" ")[0] + " " + e.v.toFixed(2); }
+  // hover
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  const cross = el("line", { y1: mg.t, y2: H - mg.b, stroke: css("--ink-3"), opacity: 0 }, svg);
+  const hit = el("rect", { x: mg.l, y: mg.t, width: W - mg.l - mg.r, height: H - mg.t - mg.b, fill: "transparent" }, svg);
+  hit.addEventListener("pointermove", ev => { const r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width;
+    const ts = t0 + (x - mg.l) / (W - mg.l - mg.r) * (t1 - t0); cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.setAttribute("opacity", 1);
+    let html = ""; for (const m of M) { const c = D.curves[m]; let best = 0; c.dates.forEach((d, i) => { if (Math.abs(Date.parse(d) - ts) < Math.abs(Date.parse(c.dates[best]) - ts)) best = i; }); if (!html) html = `<b>${c.dates[best]}</b>`; html += `<br>${NAME[m]}: ${c.rel[best].toFixed(3)}`; }
+    tip.innerHTML = html; tip.hidden = false; tip.style.left = (x / W * r.width) + "px"; tip.style.top = "40px"; });
+  hit.addEventListener("pointerleave", () => { tip.hidden = true; cross.setAttribute("opacity", 0); });
+}
+
+function hist() {
+  const box = document.getElementById("study2-c-hist"); box.innerHTML = "";
+  const { counts, edges, observed } = D.hist, W = 800, H = 250, mg = { l: 20, r: 14, t: 44, b: 30 };
+  const lo = Math.min(edges[0], observed) - .01, hi = Math.max(edges[edges.length - 1], observed) + .02, cmax = Math.max(...counts);
+  const sx = v => mg.l + (v - lo) / (hi - lo) * (W - mg.l - mg.r), sy = c => mg.t + (1 - c / cmax) * (H - mg.t - mg.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box), ax = el("g", { class: "axis" }, svg);
+  for (const t of ticks(lo, hi, 8)) el("text", { x: sx(t), y: H - 8, "text-anchor": "middle" }, ax).textContent = pct(t, 0);
+  el("line", { x1: mg.l, x2: W - mg.r, y1: H - mg.b, y2: H - mg.b, stroke: css("--rule") }, ax);
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  counts.forEach((c, i) => { const x0 = sx(edges[i]) + 1, x1 = sx(edges[i + 1]) - 1;
+    const r = el("rect", { x: x0, y: sy(c), width: Math.max(1, x1 - x0), height: H - mg.b - sy(c), fill: css("--bench"), opacity: edges[i] >= observed ? 1 : .45, rx: 2 }, svg);
+    r.addEventListener("pointerenter", () => { const b = svg.getBoundingClientRect(); tip.innerHTML = `${pct(edges[i])} to ${pct(edges[i + 1])} a year<br>${c} random pickers`; tip.hidden = false; tip.style.left = ((x0 + x1) / 2 / W * b.width) + "px"; tip.style.top = (sy(c) / H * b.height) + "px"; });
+    r.addEventListener("pointerleave", () => tip.hidden = true); });
+  el("line", { x1: sx(observed), x2: sx(observed), y1: 8, y2: H - mg.b, stroke: css("--s1"), "stroke-width": 2.5 }, svg);
+  const t = el("text", { x: sx(observed) - 8, y: 18, "text-anchor": "end", fill: css("--ink"), "font-size": 13, "font-family": "var(--f-mono)" }, svg);
+  t.textContent = `Fly ${pct(observed)}/yr · beat ${(100 - D.test.tokyo.A.p_edge * 100).toFixed(0)}% of random pickers`;
+}
+
+function seeds() {
+  const box = document.getElementById("study2-c-seeds"); box.innerHTML = ""; const ps = D.checks.seeds.map(s => s.p_edge);
+  document.getElementById("study2-seed-range").textContent = Math.min(...ps).toFixed(3) + "–" + Math.max(...ps).toFixed(3);
+  const W = 400, H = 70, sx = p => 14 + p / 0.2 * (W - 28);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box), ax = el("g", { class: "axis" }, svg);
+  el("rect", { x: sx(0), y: 8, width: sx(.05) - sx(0), height: 34, fill: css("--warn-bg") }, svg);
+  el("line", { x1: sx(0), x2: sx(.2), y1: 25, y2: 25, stroke: css("--rule") }, svg);
+  for (const t of [0, .05, .1, .15, .2]) el("text", { x: sx(t), y: 62, "text-anchor": t === 0 ? "start" : t === .2 ? "end" : "middle" }, ax).textContent = t === 0 ? "p = 0" : t;
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  D.checks.seeds.forEach((s, i) => { const c = el("circle", { cx: sx(s.p_edge), cy: 25 + ((i % 3) - 1) * 7, r: 5, fill: css("--s1"), stroke: css("--panel"), "stroke-width": 2 }, svg);
+    c.addEventListener("pointerenter", () => { const b = svg.getBoundingClientRect(); tip.innerHTML = `Wiring ${s.seed}<br>p = ${s.p_edge.toFixed(3)}<br>${pct(s.excess_ann)}/yr`; tip.hidden = false; tip.style.left = (sx(s.p_edge) / W * b.width) + "px"; tip.style.top = "6px"; });
+    c.addEventListener("pointerleave", () => tip.hidden = true); });
+}
+
+function bars(id, items, fmt, maxAbs) {
+  const host = document.getElementById(id);
+  host.innerHTML = items.map(([label, v, color]) => { const w = Math.abs(v) / maxAbs * 50, left = v >= 0 ? 50 : 50 - w;
+    return `<div class="bar"><span>${label}</span><div class="track"><div class="zero" style="left:50%"></div><div class="fill" style="left:${left}%;width:${w}%;background:var(${color})"></div></div><span class="v">${fmt(v)}</span></div>`; }).join("");
+}
+const FN = { mom_12_1: "12-1 momentum", rev_1m: "1-month return", rev_1w: "1-week return", high_52w: "Near 52-week high", vol_60: "Volatility", max_21: "Biggest daily jump (MAX)",
+  illiq: "Illiquidity", volu_trend: "Volume trend", ma200: "Vs 200-day average", resid_3m: "3-month vs market", zero_days: "No-trade days" };
+function drawAll() {
+  relChart(); hist(); seeds();
+  const tl = Object.entries(D.checks.tilts).filter(([k]) => FN[k]).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1])).slice(0, 6).map(([k, v]) => [FN[k], v, "--s1"]);
+  bars("study2-tilts", tl, v => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2), 1.2);
+  const bl = D.checks.baselines.map(b => [`${b.direction === "low" ? "Low" : "High"} ${FN[b.factor].toLowerCase()}`, b.excess_ann, b.excess_ann >= 0 ? "--s3" : "--bench"]).sort((a, b) => b[1] - a[1]);
+  const comp = D.checks.textbook_composite.excess_ann;
+  bars("study2-baselines", [["Fly brain", D.test.tokyo.A.excess_ann, "--s1"], ["Textbook mix", comp, "--s3"], ...bl.slice(0, 6)], v => pct(v), 0.55);
+}
+drawAll();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+})();
+</script>
+</body>
+</html>

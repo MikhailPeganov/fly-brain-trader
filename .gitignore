@@ -1,0 +1,14 @@
+# downloaded market/news data and caches (re-created by the scripts)
+data/
+results/market_scan/cache/
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+# os / editors
+.DS_Store
+.idea/
+.vscode/
+# stray logs at the repo root
+/*.log

@@ -1,0 +1,1130 @@
+{
+ "prereg": "Fly-brain v3 experiment: news + simple models + maths school + love, long/short, 5 markets incl. MOEX.\n\nPRE-REGISTERED before any 2024-26 v3 simulation:\n  Markets: Tokyo small caps, Vietnam HOSE, Nordic small caps, UK small caps (AIM), MOEX (IMOEX stocks,\n           research only: UK sanctions prohibit UK persons from dealing on the Moscow Exchange).\n  Model:   stock brain + market brain (niche/v3.py), maths school first (niche/school.py), then real\n           pre-training 2017-03..2021 (with exploration), learning through 2022-23, blind test\n           2024-01-01..2026-10-23 with online learning. Brain seed 0. Love gain 1.0 (not tuned).\n  Tuned on 2022-23 only: theta_m (how bearish the market brain must be before shorting) in {0.75, 1.5},\n           pooled across markets, 2 tuning seeds.\n  H1 (beats S&P 500): weekly USD net return minus S&P 500 total return; one-sided Newey-West t-test.\n  H2a (stock-picking edge): fly vs random stock picks with identical trade counts and the fly's own\n           long/short timing (permutation, 2,000 runs).\n  H2b (timing edge): fly's long/short timing vs the same timing shifted to random weeks (circular\n           shift, 2,000 runs), same stock books.\n  Holm correction: 5 tests for H1, 10 for H2. Ablations (news off, school off, love off, never short)\n  are secondary and descriptive.\nNEWS SCOPE: the GDELT archive throttled this server, so the historical news senses are market-level only\n  (per-company news exists only in the live crawler); the stock brain's company-news senses are zero.\n",
+ "school": {
+  "0": {
+   "lessons": [
+    {
+     "round": 1,
+     "world": "reversion",
+     "fly_ic": 0.050946300660216784,
+     "oracle_ic": 0.23002519347412126,
+     "passed": false
+    },
+    {
+     "round": 1,
+     "world": "news",
+     "fly_ic": 0.028788285863762256,
+     "oracle_ic": 0.06734802123428422,
+     "passed": false
+    },
+    {
+     "round": 1,
+     "world": "lowvol",
+     "fly_ic": 0.014841926403695643,
+     "oracle_ic": 0.037097036336799505,
+     "passed": false
+    },
+    {
+     "round": 1,
+     "world": "random",
+     "fly_ic": 0.012636781266066302,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 1,
+     "world": "momentum",
+     "fly_ic": 0.05006327768455237,
+     "oracle_ic": 0.10874112536881826,
+     "passed": false
+    },
+    {
+     "round": 2,
+     "world": "news",
+     "fly_ic": 0.05673733202465974,
+     "oracle_ic": 0.06536691860140788,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "momentum",
+     "fly_ic": 0.05380041521740113,
+     "oracle_ic": 0.10749655870109621,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "reversion",
+     "fly_ic": 0.05956298142377051,
+     "oracle_ic": 0.22752616970239734,
+     "passed": false
+    },
+    {
+     "round": 2,
+     "world": "random",
+     "fly_ic": 0.002780659975545293,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "lowvol",
+     "fly_ic": 0.03547476355675768,
+     "oracle_ic": 0.027668736722918516,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "random",
+     "fly_ic": -0.004708691974725108,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "reversion",
+     "fly_ic": 0.04005192479046899,
+     "oracle_ic": 0.21414422849320106,
+     "passed": false
+    },
+    {
+     "round": 3,
+     "world": "lowvol",
+     "fly_ic": 0.017986662987906826,
+     "oracle_ic": 0.033491670775117714,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "news",
+     "fly_ic": 0.04715386111475468,
+     "oracle_ic": 0.058243573101028685,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "momentum",
+     "fly_ic": 0.03346338653965898,
+     "oracle_ic": 0.11598478440808903,
+     "passed": false
+    },
+    {
+     "round": 4,
+     "world": "lowvol",
+     "fly_ic": 0.03766103243490178,
+     "oracle_ic": 0.03946229798859282,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "reversion",
+     "fly_ic": 0.06643454295178262,
+     "oracle_ic": 0.2266691995832749,
+     "passed": false
+    },
+    {
+     "round": 4,
+     "world": "random",
+     "fly_ic": -0.005212561457150739,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "momentum",
+     "fly_ic": 0.04258622847209343,
+     "oracle_ic": 0.11323699204091262,
+     "passed": false
+    },
+    {
+     "round": 4,
+     "world": "news",
+     "fly_ic": 0.06722330524509736,
+     "oracle_ic": 0.07257771003230976,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "news",
+     "fly_ic": 0.0524989182335319,
+     "oracle_ic": 0.054660280098361595,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "reversion",
+     "fly_ic": 0.05859781958095307,
+     "oracle_ic": 0.2229929123565623,
+     "passed": false
+    },
+    {
+     "round": 5,
+     "world": "momentum",
+     "fly_ic": 0.06494482614090553,
+     "oracle_ic": 0.1279769383973573,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "lowvol",
+     "fly_ic": 0.024003003315406914,
+     "oracle_ic": 0.017929612056683055,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "random",
+     "fly_ic": -0.005680186109063168,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "news",
+     "fly_ic": 0.05574569517253233,
+     "oracle_ic": 0.05641143008773238,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "random",
+     "fly_ic": 0.003406953760702705,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "lowvol",
+     "fly_ic": 0.03578432215080804,
+     "oracle_ic": 0.0417617641161101,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "reversion",
+     "fly_ic": 0.06448027717344598,
+     "oracle_ic": 0.23463956445895845,
+     "passed": false
+    },
+    {
+     "round": 6,
+     "world": "momentum",
+     "fly_ic": 0.06187559459463534,
+     "oracle_ic": 0.12104941147381068,
+     "passed": true
+    }
+   ],
+   "final_exam": {
+    "random": {
+     "fly_ic": -0.0001814653827191756,
+     "oracle_ic": 0.0,
+     "pct_of_oracle": null,
+     "passed": true
+    },
+    "momentum": {
+     "fly_ic": 0.04249220901989696,
+     "oracle_ic": 0.11514421793938187,
+     "pct_of_oracle": 0.36903467477860813,
+     "passed": false
+    },
+    "reversion": {
+     "fly_ic": 0.013723945258847495,
+     "oracle_ic": 0.23060462830202613,
+     "pct_of_oracle": 0.05951287864384513,
+     "passed": false
+    },
+    "lowvol": {
+     "fly_ic": 0.037572500968689825,
+     "oracle_ic": 0.028768384376126055,
+     "pct_of_oracle": 1.3060344466152927,
+     "passed": true
+    },
+    "news": {
+     "fly_ic": 0.04129389823404451,
+     "oracle_ic": 0.053760371011975554,
+     "pct_of_oracle": 0.7681103656231457,
+     "passed": true
+    }
+   }
+  },
+  "101": {
+   "lessons": [
+    {
+     "round": 1,
+     "world": "momentum",
+     "fly_ic": 0.04849769399050457,
+     "oracle_ic": 0.11949625113265096,
+     "passed": false
+    },
+    {
+     "round": 1,
+     "world": "random",
+     "fly_ic": -0.015447836240910518,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 1,
+     "world": "lowvol",
+     "fly_ic": 0.033252370463176965,
+     "oracle_ic": 0.03444555510827464,
+     "passed": true
+    },
+    {
+     "round": 1,
+     "world": "news",
+     "fly_ic": 0.050151266382919696,
+     "oracle_ic": 0.06249495301288922,
+     "passed": true
+    },
+    {
+     "round": 1,
+     "world": "reversion",
+     "fly_ic": 0.04960994591921501,
+     "oracle_ic": 0.24231852330961734,
+     "passed": false
+    },
+    {
+     "round": 2,
+     "world": "reversion",
+     "fly_ic": 0.04497959343673061,
+     "oracle_ic": 0.2242748696980251,
+     "passed": false
+    },
+    {
+     "round": 2,
+     "world": "lowvol",
+     "fly_ic": 0.029582355220446666,
+     "oracle_ic": 0.02497443714220668,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "random",
+     "fly_ic": -0.0018784592027041918,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "momentum",
+     "fly_ic": 0.05071067910811181,
+     "oracle_ic": 0.12073508858423528,
+     "passed": false
+    },
+    {
+     "round": 2,
+     "world": "news",
+     "fly_ic": 0.05421665784668918,
+     "oracle_ic": 0.06939045663360303,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "reversion",
+     "fly_ic": 0.05702578298030808,
+     "oracle_ic": 0.21593421653723158,
+     "passed": false
+    },
+    {
+     "round": 3,
+     "world": "random",
+     "fly_ic": -0.00415947122350426,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "lowvol",
+     "fly_ic": 0.02045649791109764,
+     "oracle_ic": 0.021527318561001825,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "momentum",
+     "fly_ic": 0.05364433930830268,
+     "oracle_ic": 0.1253940871474082,
+     "passed": false
+    },
+    {
+     "round": 3,
+     "world": "news",
+     "fly_ic": 0.06655636417913147,
+     "oracle_ic": 0.07403872045496006,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "reversion",
+     "fly_ic": 0.06557684914220063,
+     "oracle_ic": 0.23223449983189273,
+     "passed": false
+    },
+    {
+     "round": 4,
+     "world": "momentum",
+     "fly_ic": 0.0462892319382692,
+     "oracle_ic": 0.11274313360984337,
+     "passed": false
+    },
+    {
+     "round": 4,
+     "world": "lowvol",
+     "fly_ic": 0.0344209496326517,
+     "oracle_ic": 0.04328006670013735,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "news",
+     "fly_ic": 0.058710896215249664,
+     "oracle_ic": 0.062189012871136366,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "random",
+     "fly_ic": 0.012856541935600591,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "reversion",
+     "fly_ic": 0.05608197000604582,
+     "oracle_ic": 0.21955918204885813,
+     "passed": false
+    },
+    {
+     "round": 5,
+     "world": "random",
+     "fly_ic": -0.004245409465569673,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "lowvol",
+     "fly_ic": 0.03190962312311633,
+     "oracle_ic": 0.028424269562634653,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "news",
+     "fly_ic": 0.04677874822658144,
+     "oracle_ic": 0.05328321776901308,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "momentum",
+     "fly_ic": 0.046887603333197636,
+     "oracle_ic": 0.11650385139016411,
+     "passed": false
+    },
+    {
+     "round": 6,
+     "world": "momentum",
+     "fly_ic": 0.049609403151370406,
+     "oracle_ic": 0.11060251753818595,
+     "passed": false
+    },
+    {
+     "round": 6,
+     "world": "lowvol",
+     "fly_ic": 0.044333518779013585,
+     "oracle_ic": 0.040067423827809916,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "reversion",
+     "fly_ic": 0.04837991336822124,
+     "oracle_ic": 0.22970013584273,
+     "passed": false
+    },
+    {
+     "round": 6,
+     "world": "random",
+     "fly_ic": -0.008117093116346806,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "news",
+     "fly_ic": 0.061002763592942204,
+     "oracle_ic": 0.0624240313478584,
+     "passed": true
+    }
+   ],
+   "final_exam": {
+    "random": {
+     "fly_ic": -0.0012987228371078307,
+     "oracle_ic": 0.0,
+     "pct_of_oracle": null,
+     "passed": true
+    },
+    "momentum": {
+     "fly_ic": 0.00462649280003377,
+     "oracle_ic": 0.10678872912416869,
+     "pct_of_oracle": 0.04332379304424826,
+     "passed": false
+    },
+    "reversion": {
+     "fly_ic": 0.04694296565334925,
+     "oracle_ic": 0.23568885531769254,
+     "pct_of_oracle": 0.19917346363311633,
+     "passed": false
+    },
+    "lowvol": {
+     "fly_ic": 0.00707208409283139,
+     "oracle_ic": 0.03128899824655832,
+     "pct_of_oracle": 0.22602462492097505,
+     "passed": false
+    },
+    "news": {
+     "fly_ic": 0.062166457851815335,
+     "oracle_ic": 0.06712458180491415,
+     "pct_of_oracle": 0.9261354958231437,
+     "passed": true
+    }
+   }
+  },
+  "102": {
+   "lessons": [
+    {
+     "round": 1,
+     "world": "reversion",
+     "fly_ic": 0.06756247484044887,
+     "oracle_ic": 0.22582845219195288,
+     "passed": false
+    },
+    {
+     "round": 1,
+     "world": "random",
+     "fly_ic": -0.003608984013979288,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 1,
+     "world": "momentum",
+     "fly_ic": 0.043151792566191276,
+     "oracle_ic": 0.10805566988859688,
+     "passed": false
+    },
+    {
+     "round": 1,
+     "world": "lowvol",
+     "fly_ic": 0.044224181212091054,
+     "oracle_ic": 0.032842098280179775,
+     "passed": true
+    },
+    {
+     "round": 1,
+     "world": "news",
+     "fly_ic": 0.0557579376028055,
+     "oracle_ic": 0.07046622250164715,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "momentum",
+     "fly_ic": 0.06153847545558576,
+     "oracle_ic": 0.13379577153695266,
+     "passed": false
+    },
+    {
+     "round": 2,
+     "world": "news",
+     "fly_ic": 0.05314830980585495,
+     "oracle_ic": 0.06101964970366383,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "reversion",
+     "fly_ic": 0.05479729882535992,
+     "oracle_ic": 0.2196838377305067,
+     "passed": false
+    },
+    {
+     "round": 2,
+     "world": "random",
+     "fly_ic": 0.013797037995256806,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 2,
+     "world": "lowvol",
+     "fly_ic": 0.026360907447528666,
+     "oracle_ic": 0.032240409970645305,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "random",
+     "fly_ic": 0.0038313982151984044,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "news",
+     "fly_ic": 0.0552147476054138,
+     "oracle_ic": 0.0600109458181999,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "reversion",
+     "fly_ic": 0.05551725021748406,
+     "oracle_ic": 0.2302002059502432,
+     "passed": false
+    },
+    {
+     "round": 3,
+     "world": "lowvol",
+     "fly_ic": 0.03692509954513039,
+     "oracle_ic": 0.033988001815256894,
+     "passed": true
+    },
+    {
+     "round": 3,
+     "world": "momentum",
+     "fly_ic": 0.06187251891018248,
+     "oracle_ic": 0.1339526917515872,
+     "passed": false
+    },
+    {
+     "round": 4,
+     "world": "random",
+     "fly_ic": 0.0043293575588714646,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "momentum",
+     "fly_ic": 0.048138019832133956,
+     "oracle_ic": 0.11741407306559801,
+     "passed": false
+    },
+    {
+     "round": 4,
+     "world": "news",
+     "fly_ic": 0.06957168078616906,
+     "oracle_ic": 0.07399921901737912,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "lowvol",
+     "fly_ic": 0.038480792802898366,
+     "oracle_ic": 0.0299823751219343,
+     "passed": true
+    },
+    {
+     "round": 4,
+     "world": "reversion",
+     "fly_ic": 0.053597962811356495,
+     "oracle_ic": 0.23313688152734868,
+     "passed": false
+    },
+    {
+     "round": 5,
+     "world": "reversion",
+     "fly_ic": 0.05820968026450885,
+     "oracle_ic": 0.22355968260142597,
+     "passed": false
+    },
+    {
+     "round": 5,
+     "world": "lowvol",
+     "fly_ic": 0.018064097867073144,
+     "oracle_ic": 0.03289920951894185,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "random",
+     "fly_ic": -0.002074760239843078,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "news",
+     "fly_ic": 0.06694733794987538,
+     "oracle_ic": 0.07374508305101866,
+     "passed": true
+    },
+    {
+     "round": 5,
+     "world": "momentum",
+     "fly_ic": 0.04669293059959261,
+     "oracle_ic": 0.10922642012945012,
+     "passed": false
+    },
+    {
+     "round": 6,
+     "world": "momentum",
+     "fly_ic": 0.05071821755039825,
+     "oracle_ic": 0.11797113379679675,
+     "passed": false
+    },
+    {
+     "round": 6,
+     "world": "lowvol",
+     "fly_ic": 0.031241958366690935,
+     "oracle_ic": 0.018250689390547095,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "news",
+     "fly_ic": 0.07209416419028837,
+     "oracle_ic": 0.07572926136834789,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "random",
+     "fly_ic": 0.004575774160330606,
+     "oracle_ic": 0.0,
+     "passed": true
+    },
+    {
+     "round": 6,
+     "world": "reversion",
+     "fly_ic": 0.06224371180836676,
+     "oracle_ic": 0.22965852364130881,
+     "passed": false
+    }
+   ],
+   "final_exam": {
+    "random": {
+     "fly_ic": -0.006676888794407076,
+     "oracle_ic": 0.0,
+     "pct_of_oracle": null,
+     "passed": true
+    },
+    "momentum": {
+     "fly_ic": -0.007895764450816939,
+     "oracle_ic": 0.11246294478694101,
+     "pct_of_oracle": -0.0702076978846261,
+     "passed": false
+    },
+    "reversion": {
+     "fly_ic": 0.07209157096614183,
+     "oracle_ic": 0.2302730574564994,
+     "pct_of_oracle": 0.31306993428773383,
+     "passed": false
+    },
+    "lowvol": {
+     "fly_ic": 0.0016264943077222318,
+     "oracle_ic": 0.02316671868191844,
+     "pct_of_oracle": 0.07020822974777632,
+     "passed": false
+    },
+    "news": {
+     "fly_ic": 0.04818837662660738,
+     "oracle_ic": 0.05118469635908313,
+     "pct_of_oracle": 0.9414606328529284,
+     "passed": true
+    }
+   }
+  }
+ },
+ "validation": [
+  {
+   "theta_m": 0.75,
+   "val_t": -2.269342293806269
+  },
+  {
+   "theta_m": 1.5,
+   "val_t": -2.0091596530386524
+  }
+ ],
+ "locked": {
+  "theta_m": 1.5,
+  "lr": 0.01,
+  "love_gain": 1.0
+ },
+ "locked_at": "2026-10-26 17:34:36",
+ "test": {
+  "tokyo": {
+   "full": {
+    "weeks": 136,
+    "cagr_usd": 0.029758633898867348,
+    "spx_cagr": 0.22484066881360731,
+    "total_usd": 0.07971237474676984,
+    "spx_total": 0.699659889019967,
+    "vol_ann": 0.17435164838766531,
+    "sharpe": 0.2557260945358499,
+    "share_short_weeks": 0.11764705882352941,
+    "max_drawdown": -0.19363956480067468,
+    "excess_vs_spx_ann": -0.1687283860880619,
+    "nw_t": -1.4798932439072607,
+    "p_beats_spx": 0.9305491305096023,
+    "p_selection": 0.04147926036981509,
+    "p_timing": 0.255872063968016
+   },
+   "never_short": {
+    "excess_vs_spx_ann": -0.15377611588878345,
+    "cagr_usd": 0.04588503268923172
+   },
+   "no_news": {
+    "weeks": 136,
+    "cagr_usd": -0.02861542190997679,
+    "spx_cagr": 0.22484066881360731,
+    "total_usd": -0.0731207717461354,
+    "spx_total": 0.699659889019967,
+    "vol_ann": 0.17867573002867718,
+    "sharpe": -0.07284646366018338,
+    "share_short_weeks": 0.1323529411764706,
+    "max_drawdown": -0.21613442844637876,
+    "excess_vs_spx_ann": -0.22633054728298738,
+    "nw_t": -2.0442533151159967,
+    "p_beats_spx": 0.9795357356811275,
+    "full_minus_this_ann": 0.057602161194925505,
+    "p_full_better": 0.18477096115177305
+   },
+   "no_school": {
+    "weeks": 136,
+    "cagr_usd": -0.02191268359823395,
+    "spx_cagr": 0.22484066881360731,
+    "total_usd": -0.05630034995042155,
+    "spx_total": 0.699659889019967,
+    "vol_ann": 0.14022997648250485,
+    "sharpe": -0.08756816819167473,
+    "share_short_weeks": 0.051470588235294115,
+    "max_drawdown": -0.19150891355130994,
+    "excess_vs_spx_ann": -0.2255943343747373,
+    "nw_t": -2.099206467136539,
+    "p_beats_spx": 0.9821006479147913,
+    "full_minus_this_ann": 0.05686594828667546,
+    "p_full_better": 0.22985874715617527
+   },
+   "no_love": {
+    "weeks": 136,
+    "cagr_usd": 0.0009017510590916267,
+    "spx_cagr": 0.22484066881360731,
+    "total_usd": 0.0023601438942990605,
+    "spx_total": 0.699659889019967,
+    "vol_ann": 0.16501666955822153,
+    "sharpe": 0.08829763201937114,
+    "share_short_weeks": 0.10294117647058823,
+    "max_drawdown": -0.1713272706675465,
+    "excess_vs_spx_ann": -0.19874407104162053,
+    "nw_t": -1.828039774691419,
+    "p_beats_spx": 0.9662282087714753,
+    "full_minus_this_ann": 0.030015684953558698,
+    "p_full_better": 0.1304866347575857
+   }
+  },
+  "vietnam": {
+   "full": {
+    "weeks": 146,
+    "cagr_usd": -0.014389751422235753,
+    "spx_cagr": 0.19920503747457463,
+    "total_usd": -0.039878558313681034,
+    "spx_total": 0.6653614845286449,
+    "vol_ann": 0.22818156954553317,
+    "sharpe": 0.05229862372341351,
+    "share_short_weeks": 0.0273972602739726,
+    "max_drawdown": -0.2292609997895897,
+    "excess_vs_spx_ann": -0.1812367821503242,
+    "nw_t": -1.9092262850997412,
+    "p_beats_spx": 0.9718835465644652,
+    "p_selection": 0.6671664167916042,
+    "p_timing": 0.1969015492253873
+   },
+   "never_short": {
+    "excess_vs_spx_ann": -0.20476030973844317,
+    "cagr_usd": -0.037416501069538866
+   },
+   "no_news": {
+    "weeks": 146,
+    "cagr_usd": -0.032570282905413195,
+    "spx_cagr": 0.19920503747457463,
+    "total_usd": -0.08877890203549277,
+    "spx_total": 0.6653614845286449,
+    "vol_ann": 0.22809333556217576,
+    "sharpe": -0.029234652106877465,
+    "share_short_weeks": 0.02054794520547945,
+    "max_drawdown": -0.2538444502079732,
+    "excess_vs_spx_ann": -0.19983859351024927,
+    "nw_t": -2.031432634085356,
+    "p_beats_spx": 0.9788944366109452,
+    "full_minus_this_ann": 0.018601811359925148,
+    "p_full_better": 0.26493223893078277
+   },
+   "no_school": {
+    "weeks": 146,
+    "cagr_usd": -0.03886582180290876,
+    "spx_cagr": 0.19920503747457463,
+    "total_usd": -0.1053300952293672,
+    "spx_total": 0.6653614845286449,
+    "vol_ann": 0.22636238230721661,
+    "sharpe": -0.06066124136236493,
+    "share_short_weeks": 0.04794520547945205,
+    "max_drawdown": -0.33719465077669475,
+    "excess_vs_spx_ann": -0.2069017873059165,
+    "nw_t": -1.6807467143160628,
+    "p_beats_spx": 0.9535939386477821,
+    "full_minus_this_ann": 0.0256650051555923,
+    "p_full_better": 0.3892354843562855
+   },
+   "no_love": {
+    "weeks": 146,
+    "cagr_usd": -0.07031880042072625,
+    "spx_cagr": 0.19920503747457463,
+    "total_usd": -0.18512357838294946,
+    "spx_total": 0.6653614845286449,
+    "vol_ann": 0.21875877415483017,
+    "sharpe": -0.22174646950002608,
+    "share_short_weeks": 0.0547945205479452,
+    "max_drawdown": -0.29646060470428404,
+    "excess_vs_spx_ann": -0.24167935003956723,
+    "nw_t": -2.505433333594431,
+    "p_beats_spx": 0.9938849274143525,
+    "full_minus_this_ann": 0.06044256788924305,
+    "p_full_better": 0.07813536817306299
+   }
+  },
+  "nordic": {
+   "full": {
+    "weeks": 141,
+    "cagr_usd": -0.12837579520892073,
+    "spx_cagr": 0.20798763712481239,
+    "total_usd": -0.31102961707899024,
+    "spx_total": 0.6692277532469795,
+    "vol_ann": 0.2120462829136558,
+    "sharpe": -0.5412733141408139,
+    "share_short_weeks": 0.14893617021276595,
+    "max_drawdown": -0.3300190468333596,
+    "excess_vs_spx_ann": -0.3118699697489361,
+    "nw_t": -2.5372415653178773,
+    "p_beats_spx": 0.9944135086015468,
+    "p_selection": 0.30634682658670664,
+    "p_timing": 0.26436781609195403
+   },
+   "never_short": {
+    "excess_vs_spx_ann": -0.3026398781206217,
+    "cagr_usd": -0.12240405134489929
+   },
+   "no_news": {
+    "weeks": 141,
+    "cagr_usd": -0.1710622314399639,
+    "spx_cagr": 0.20798763712481239,
+    "total_usd": -0.3987306402018437,
+    "spx_total": 0.6692277532469795,
+    "vol_ann": 0.214655158920128,
+    "sharpe": -0.764353749290157,
+    "share_short_weeks": 0.09929078014184398,
+    "max_drawdown": -0.40738546245994145,
+    "excess_vs_spx_ann": -0.361167450971704,
+    "nw_t": -3.0311632455029045,
+    "p_beats_spx": 0.9987819325105054,
+    "full_minus_this_ann": 0.049297481222767836,
+    "p_full_better": 0.3255595530245049
+   },
+   "no_school": {
+    "weeks": 141,
+    "cagr_usd": -0.2077329729249302,
+    "spx_cagr": 0.20798763712481239,
+    "total_usd": -0.46815337937400925,
+    "spx_total": 0.6692277532469795,
+    "vol_ann": 0.22025757227388762,
+    "sharpe": -0.9444155786145232,
+    "share_short_weeks": 0.0,
+    "max_drawdown": -0.4957931172897284,
+    "excess_vs_spx_ann": -0.40510965801120175,
+    "nw_t": -3.3384461799681935,
+    "p_beats_spx": 0.9995787582539287,
+    "full_minus_this_ann": 0.09323968826226568,
+    "p_full_better": 0.1993967943918754
+   },
+   "no_love": {
+    "weeks": 141,
+    "cagr_usd": -0.15538639529481546,
+    "spx_cagr": 0.20798763712481239,
+    "total_usd": -0.36739802569098345,
+    "spx_total": 0.6692277532469795,
+    "vol_ann": 0.20579335963614498,
+    "sharpe": -0.7164651397296179,
+    "share_short_weeks": 0.16312056737588654,
+    "max_drawdown": -0.3803440407873979,
+    "excess_vs_spx_ann": -0.34453874361342246,
+    "nw_t": -3.086173732652428,
+    "p_beats_spx": 0.9989862483994436,
+    "full_minus_this_ann": 0.032668773864486335,
+    "p_full_better": 0.24939386212691028
+   }
+  },
+  "aim": {
+   "full": {
+    "weeks": 142,
+    "cagr_usd": -0.06596344710908808,
+    "spx_cagr": 0.21164098816789778,
+    "total_usd": -0.17001436746273024,
+    "spx_total": 0.6891765164012562,
+    "vol_ann": 0.1366632352117007,
+    "sharpe": -0.4303181809547469,
+    "share_short_weeks": 0.08450704225352113,
+    "max_drawdown": -0.21050022955239078,
+    "excess_vs_spx_ann": -0.26064560229270567,
+    "nw_t": -2.8122980769628763,
+    "p_beats_spx": 0.9975405551683489,
+    "p_selection": 0.30184907546226886,
+    "p_timing": 0.6371814092953523
+   },
+   "never_short": {
+    "excess_vs_spx_ann": -0.19000052724520156,
+    "cagr_usd": 0.0032067416183751973
+   },
+   "no_news": {
+    "weeks": 142,
+    "cagr_usd": 0.00015318927702256957,
+    "spx_cagr": 0.21164098816789778,
+    "total_usd": 0.00041838002254790396,
+    "spx_total": 0.6891765164012562,
+    "vol_ann": 0.13249223539519828,
+    "sharpe": 0.06753014346766532,
+    "share_short_weeks": 0.04225352112676056,
+    "max_drawdown": -0.18707997302218937,
+    "excess_vs_spx_ann": -0.19288970784483647,
+    "nw_t": -3.027977641356386,
+    "p_beats_spx": 0.9987690184894585,
+    "full_minus_this_ann": -0.06775589444786922,
+    "p_full_better": 0.8569006360955654
+   },
+   "no_school": {
+    "weeks": 142,
+    "cagr_usd": -0.11619536783174644,
+    "spx_cagr": 0.21164098816789778,
+    "total_usd": -0.286307123356346,
+    "spx_total": 0.6891765164012562,
+    "vol_ann": 0.17225788940010428,
+    "sharpe": -0.6301357622053907,
+    "share_short_weeks": 0.0,
+    "max_drawdown": -0.32418593090644754,
+    "excess_vs_spx_ann": -0.31038278394748336,
+    "nw_t": -3.175790710560873,
+    "p_beats_spx": 0.9992528564250944,
+    "full_minus_this_ann": 0.04973718165477774,
+    "p_full_better": 0.30792145440322183
+   },
+   "no_love": {
+    "weeks": 142,
+    "cagr_usd": -0.06596344710908808,
+    "spx_cagr": 0.21164098816789778,
+    "total_usd": -0.17001436746273024,
+    "spx_total": 0.6891765164012562,
+    "vol_ann": 0.1366632352117007,
+    "sharpe": -0.4303181809547469,
+    "share_short_weeks": 0.08450704225352113,
+    "max_drawdown": -0.21050022955239078,
+    "excess_vs_spx_ann": -0.26064560229270567,
+    "nw_t": -2.8122980769628763,
+    "p_beats_spx": 0.9975405551683489,
+    "full_minus_this_ann": 0.0,
+    "p_full_better": 0.5
+   }
+  },
+  "moex": {
+   "full": {
+    "weeks": 143,
+    "cagr_usd": 0.06657398007734416,
+    "spx_cagr": 0.2060985692517363,
+    "total_usd": 0.19391994517759836,
+    "spx_total": 0.6741821463568911,
+    "vol_ann": 0.3011905199070454,
+    "sharpe": 0.362507674336145,
+    "share_short_weeks": 0.006993006993006993,
+    "max_drawdown": -0.35067931227781324,
+    "excess_vs_spx_ann": -0.08806476791364415,
+    "nw_t": -0.45603423882709004,
+    "p_beats_spx": 0.6758173213110087,
+    "p_selection": 0.08745627186406797,
+    "p_timing": 0.600199900049975
+   },
+   "never_short": {
+    "excess_vs_spx_ann": -0.07869205709179665,
+    "cagr_usd": 0.07676517442839681
+   },
+   "no_news": {
+    "weeks": 143,
+    "cagr_usd": -0.00584105072936314,
+    "spx_cagr": 0.2060985692517363,
+    "total_usd": -0.015980913298092037,
+    "spx_total": 0.6741821463568911,
+    "vol_ann": 0.3076124101951998,
+    "sharpe": 0.13456783591417476,
+    "share_short_weeks": 0.013986013986013986,
+    "max_drawdown": -0.3858044297377652,
+    "excess_vs_spx_ann": -0.15585390647857386,
+    "nw_t": -0.771587624892965,
+    "p_beats_spx": 0.779820646973762,
+    "full_minus_this_ann": 0.06778913856492967,
+    "p_full_better": 0.16672666314882267
+   },
+   "no_school": {
+    "weeks": 143,
+    "cagr_usd": -0.04889679600486052,
+    "spx_cagr": 0.2060985692517363,
+    "total_usd": -0.12878363850486552,
+    "spx_total": 0.6741821463568911,
+    "vol_ann": 0.30861849952435777,
+    "sharpe": -0.00776386134277326,
+    "share_short_weeks": 0.04195804195804196,
+    "max_drawdown": -0.5287670310110288,
+    "excess_vs_spx_ann": -0.19964471405803352,
+    "nw_t": -0.9051298177403774,
+    "p_beats_spx": 0.8173016914476994,
+    "full_minus_this_ann": 0.1115799461443894,
+    "p_full_better": 0.149280317191409
+   },
+   "no_love": {
+    "weeks": 143,
+    "cagr_usd": 0.06627548555901552,
+    "spx_cagr": 0.2060985692517363,
+    "total_usd": 0.1930013018582235,
+    "spx_total": 0.6741821463568911,
+    "vol_ann": 0.3054814821608232,
+    "sharpe": 0.35999584094886805,
+    "share_short_weeks": 0.013986013986013986,
+    "max_drawdown": -0.3226726576539497,
+    "excess_vs_spx_ann": -0.0872765797524675,
+    "nw_t": -0.4555492516077654,
+    "p_beats_spx": 0.675642928386494,
+    "full_minus_this_ann": -0.000788188161176677,
+    "p_full_better": 0.5095984736726829
+   }
+  }
+ },
+ "holm_h1": {
+  "tokyo": 1.0,
+  "vietnam": 1.0,
+  "nordic": 1.0,
+  "aim": 1.0,
+  "moex": 1.0
+ },
+ "holm_h2": {
+  "tokyo_selection": 0.4147926036981509,
+  "vietnam_selection": 1.0,
+  "nordic_selection": 1.0,
+  "aim_selection": 1.0,
+  "moex_selection": 0.7871064467766118,
+  "tokyo_timing": 1.0,
+  "vietnam_timing": 1.0,
+  "nordic_timing": 1.0,
+  "aim_timing": 1.0,
+  "moex_timing": 1.0
+ }
+}

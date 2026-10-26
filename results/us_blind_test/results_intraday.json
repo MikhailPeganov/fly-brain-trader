@@ -1,0 +1,91 @@
+{
+ "locked_config": {
+  "lr": 0.03,
+  "threshold": 0.5
+ },
+ "live_day": {
+  "test_days": [
+   "2026-10-23"
+  ],
+  "n_bars": 65,
+  "n_decisions": 1300,
+  "total_return_net": -0.00014372771311388366,
+  "total_return_gross": 0.0011012405828922933,
+  "benchmark_total_return": 0.0028405682144660993,
+  "sharpe_net_ann": -2.0200739195542448,
+  "sharpe_gross_ann": 15.35135854379899,
+  "perm_p_net": 0.22395520895820836,
+  "perm_p_gross": 0.4363127374525095,
+  "perm_null_p95": 7.907740232687397,
+  "nw_t": -0.1166966895663149,
+  "nw_p": 0.5464497931519896,
+  "hit": {
+   "n": 702,
+   "hit": 0.5156695156695157,
+   "p0": 0.510077028595547,
+   "p": 0.398051621999197
+  },
+  "avg_abs_position": 0.2689649144775511,
+  "turnover_per_bar": 0.16506547384598005,
+  "alpha": {
+   "alpha_ann": -0.25291577760339407,
+   "beta": 0.24408914248735028,
+   "t_alpha": -0.9443281877299065,
+   "p_alpha": 0.8274990170457435
+  }
+ },
+ "last_10_days": {
+  "test_days": [
+   "2026-10-12",
+   "2026-10-13",
+   "2026-10-14",
+   "2026-10-15",
+   "2026-10-16",
+   "2026-10-19",
+   "2026-10-20",
+   "2026-10-21",
+   "2026-10-22",
+   "2026-10-23"
+  ],
+  "n_bars": 650,
+  "n_decisions": 13000,
+  "total_return_net": -0.009605019771471657,
+  "total_return_gross": 0.007220345234087766,
+  "benchmark_total_return": 0.028902333552981885,
+  "sharpe_net_ann": -14.287312565419615,
+  "sharpe_gross_ann": 10.629876143272778,
+  "perm_p_net": 0.3626373626373626,
+  "perm_p_gross": 0.7772227772227772,
+  "perm_null_p95": -8.978660609079968,
+  "nw_t": -2.5703448931430684,
+  "nw_p": 0.9949201344354369,
+  "hit": {
+   "n": 7146,
+   "hit": 0.5179121186677862,
+   "p0": 0.5090720676241385,
+   "p": 0.06902508832917763
+  },
+  "avg_abs_position": 0.28861917942493936,
+  "turnover_per_bar": 0.21989084450956145,
+  "alpha": {
+   "alpha_ann": -0.4118173473084554,
+   "beta": 0.13925575402131,
+   "t_alpha": -4.102688937763306,
+   "p_alpha": 0.9999795811936277
+  }
+ },
+ "factors": {
+  "rev_1b": "1-bar reversal (microstructure bounce)",
+  "ret_3b": "15-minute return",
+  "ret_12b": "1-hour return (intraday momentum)",
+  "from_open": "Return since the day's open (Gao et al. 2018 intraday momentum)",
+  "vwap_dev": "Deviation from session VWAP",
+  "vol_12b": "1-hour realised volatility",
+  "volu_shock": "Abnormal bar volume vs time-of-day norm",
+  "range_b": "Bar high-low range",
+  "resid_3b": "15-minute residual vs market",
+  "mkt_3b": "Market 15-minute return",
+  "tod": "Time of day (U-shaped intraday patterns)",
+  "prev_day": "Previous day's close-to-close return"
+ }
+}

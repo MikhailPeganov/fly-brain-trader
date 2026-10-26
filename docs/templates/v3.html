@@ -1,0 +1,230 @@
+<title>Fly-Brain Trader · Study 3: v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb;
+  --accent: #2a78d6; --accent-soft: #e6effa; --code-bg: #f1f4f2; --nav-bg: rgba(246,248,247,.92);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb; --fly: #2a78d6; --pain: #eb6834; --bench: #8b9590; --fail: #b4442c; --fail-bg: #fbeee9; --ok: #2c7a4b; --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif; --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --warn: #8a6100; --warn-bg: #fbf3df; --short: #eb6834; --ok-bg: #e7f4ec; 
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--f-body); }
+#study3 .wrap{ max-width: 900px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 40px; }
+#study3 h1, #study3 h2{ font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+#study3 h1{ font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
+#study3 h2{ font-size: 22px; font-weight: 700; }
+#study3 p{ margin: 0; max-width: 68ch; }
+#study3 .eyebrow{ font: 600 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+#study3 section{ display: flex; flex-direction: column; gap: 14px; }
+#study3 .lede{ color: var(--ink-2); font-size: 17px; }
+#study3 .verdict{ background: var(--fail-bg); border: 1px solid color-mix(in srgb, var(--fail) 35%, transparent); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+#study3 .verdict .big{ font: 700 24px/1.25 var(--f-display); color: var(--fail); }
+#study3 .stats{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+#study3 .stat{ display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+#study3 .stat b{ font: 600 22px var(--f-mono); font-variant-numeric: tabular-nums; }
+#study3 .stat span{ font-size: 13px; color: var(--ink-2); line-height: 1.35; }
+@media (max-width: 640px){
+#study3 .stats{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#study3 .panel{ background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; min-width: 0; }
+#study3 .grid5{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+#study3 .mini{ display: flex; flex-direction: column; gap: 6px; }
+#study3 .mini h3{ margin: 0; font: 700 15px var(--f-display); }
+#study3 .mini .nums{ font: 12px var(--f-mono); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+#study3 .chart{ position: relative; width: 100%; }
+#study3 .chart svg{ display: block; width: 100%; height: auto; overflow: visible; }
+#study3 .legend{ display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
+#study3 .legend i{ display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+#study3 .legend i.dash{ background: repeating-linear-gradient(90deg, var(--bench) 0 4px, transparent 4px 7px) !important; }
+#study3 .legend i.band{ height: 10px; opacity: .25; }
+#study3 .caption{ font-size: 14px; color: var(--ink-2); }
+#study3 .tip{ position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 9px; font: 12px/1.45 var(--f-mono); color: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,.12); white-space: nowrap; transform: translate(-50%, -110%); z-index: 2; }
+#study3 .tablewrap{ overflow-x: auto; }
+#study3 table{ border-collapse: collapse; width: 100%; font-size: 14px; min-width: 680px; }
+#study3 th, #study3 td{ text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+#study3 th{ font: 600 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+#study3 td.n{ font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+#study3 .pill{ display: inline-block; font: 600 11px var(--f-mono); padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+#study3 .pill.no{ color: var(--fail); background: var(--fail-bg); }
+#study3 .pill.yes{ color: var(--ok); background: var(--ok-bg); }
+#study3 .pill.maybe{ color: var(--warn); background: var(--warn-bg); }
+#study3 ul{ margin: 0; padding-left: 20px; max-width: 68ch; display: flex; flex-direction: column; gap: 8px; }
+#study3 .two{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 700px){
+#study3 .two{ grid-template-columns: 1fr; }
+}
+#study3 .axis text{ font: 10px var(--f-mono); fill: var(--ink-3); }
+#study3 code{ font: .9em var(--f-mono); background: var(--grid); padding: 1px 5px; border-radius: 4px; }
+
+</style>
+<p style="max-width:900px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left,0px)) 0;font-size:14px"><a href="index.html" style="color:var(--fly)">&larr; All studies</a></p>
+<div id="study3"><div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:12px">
+    <div class="eyebrow">Pain · happiness · love · blind test Jan 2024 – Oct 2026 · USD</div>
+    <h1>Fly-Brain v3 Test</h1>
+    <p class="lede">Version 3 adds news senses with a keyword crawler, a toolkit of simple maths models, a "maths school" with exams, a second brain that decides long or short, and love for beating the S&amp;P 500. It traded five markets, including Moscow, on 2024–26 data it had never seen. Everything is measured in US dollars against the S&amp;P 500.</p>
+  </header>
+
+  <div class="verdict">
+    <div class="eyebrow" style="color:var(--fail)">Verdict</div>
+    <div class="big">It didn't beat the S&amp;P 500 in any market, and no edge survives correction for multiple tests.</div>
+    <p>The S&amp;P 500 returned about 20–22% a year over the test. The fly's best market was Moscow at <b id="study3-v-moex"></b> a year, then Tokyo at <b id="study3-v-tokyo"></b>. Its Tokyo stock picks again beat random picks (p = <b id="study3-v-tp"></b> raw). That is the second Tokyo test where this has shown up, but it falls to <b id="study3-v-th"></b> after correcting for 10 tests.</p>
+    <div class="stats" id="study3-stats"></div>
+  </div>
+
+  <section>
+    <div class="eyebrow">Each market vs the S&amp;P 500</div>
+    <h2>Growth of $1, in US dollars</h2>
+    <div class="legend"><span><i style="background:var(--fly)"></i>Fly brain v3, after all costs</span><span><i class="dash"></i>S&amp;P 500 (total return)</span><span><i class="band" style="background:var(--short)"></i>Weeks the fly was short</span></div>
+    <div class="grid5" id="study3-minis"></div>
+    <p class="caption">Returns include currency moves, because love is about beating the S&amp;P 500 in dollars. Currency alone cost Tokyo about 3.7 points a year (weaker yen) and Vietnam about 2.2, and added about 3.1 to MOEX (stronger rouble). Nordic currencies were roughly flat against the dollar.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Pre-registered hypothesis tests</div>
+    <h2>The numbers behind the verdict</h2>
+    <div class="panel tablewrap"><table id="study3-tbl"></table></div>
+    <p class="caption"><b>Beats S&amp;P:</b> one-sided Newey–West test on weekly dollar returns minus the S&amp;P 500. <b>Stock-picking edge:</b> the fly against 2,000 random pickers making the same number of trades, with the same long/short timing. <b>Timing edge:</b> the fly's long/short calls against the same calls moved to random weeks. Corrected p-values use the Holm method (5 tests for "beats S&amp;P", 10 for the edges).</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Did each new piece help?</div>
+    <h2>Turning each upgrade off, one at a time</h2>
+    <div class="panel tablewrap"><table id="study3-abl"></table></div>
+    <p class="caption">Each cell shows how much higher the full model's yearly dollar return was than the same model without that piece. Positive means the piece helped. The p-value asks whether the full model was reliably better. News and the maths school mostly helped by a few points a year, but none of the differences is statistically clear. Shorting hurt in four of five markets: never shorting would have done better.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Maths school · report card</div>
+    <h2>It passed three of five exams, and failed the two most basic ones</h2>
+    <div class="panel tablewrap"><table id="study3-school"></table></div>
+    <p class="caption">Before seeing real prices, the fly trained on synthetic markets that each follow one textbook model, then sat an exam on a fresh market of each kind. The score is the rank correlation between its stock scores and next week's returns. The "best possible" column is the score you'd get by knowing the hidden true signal; the pass mark was half of that. It handled low volatility and news, and correctly found nothing in a random market. It never got good at momentum or mean reversion, even with a direct sensory pathway, regime senses and up to 6 rounds of lessons. The likely reason is that the two rules contradict each other ("buy winners" vs "buy losers"), and its simple learning rule can't keep both.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">What's inside v3</div>
+    <h2>How the new pieces work</h2>
+    <div class="two">
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">News senses and crawler</div>
+        <p class="caption">For training and the blind test, the fly read the GDELT world-news archive (65 languages, machine-translated) from 2017 to 2026. Each day it got four numbers per market: article volume, average tone, and the share of articles containing bullish words (rally, buyback, upgrade, record…) or bearish words (selloff, sanctions, downgrade, probe…). It only used news up to the previous day. For live use, <code>niche/crawler.py</code> scans the last 24 hours of headlines for the same keyword lists, so live senses match the training senses.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">Simple models ("maths basics")</div>
+        <p class="caption">Six textbook models feed the stock brain as extra senses: a 50/200-day trend, 12-month time-series momentum, a Bollinger mean-reversion z-score, a rolling least-squares forecast refitted weekly on the past two years, EWMA volatility and market beta. Two regime senses tell it which basic model has been paying lately.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">Long or short</div>
+        <p class="caption">A second, smaller mushroom body reads market news, the market's trend and the S&amp;P 500's trend each week. When it is much more bearish than usual, the fly goes short. On MOEX it shorts the stock brain's bottom picks, paying a 3% a year borrow fee. Elsewhere it shorts the whole market as an index future would. It was short in 1–15% of weeks.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">Love</div>
+        <p class="caption">Every week the fly compares its last 52 weeks of dollar returns with the S&amp;P 500's. When it's ahead, it feels love in proportion to the lead (full strength at 10 points ahead). Love strengthens the synapses behind whatever it is holding and its current long/short call. Turning love off changed yearly returns by between −0.1 and +6 points depending on the market, and none of those differences is statistically clear.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Read before trusting anything here</div>
+    <h2>Limits and disclosures</h2>
+    <ul>
+      <li><b>MOEX is research only.</b> The UK sanctioned the Moscow Exchange in June 2024, so a UK person can't trade there. This used public historical prices only.</li>
+      <li><b>News is market-level only in the backtest.</b> The news archive throttles this cloud server, and per-company history for ~40 Russian firms would have taken many hours. The stock brain's company-news senses were therefore switched off (zero) in training and testing. Per-company news exists only in the live crawler.</li>
+      <li><b>Survivorship:</b> stocks come from today's listings. For MOEX that means today's index members, which flatters it. The random pickers share the same lists, so the edge tests are fairer than the raw returns.</li>
+      <li><b>MOEX dividends</b> were added back using registry dates from dohod.ru, with ex-dates inferred from the T+2/T+1 settlement rules. Splits were detected from price jumps above 3×.</li>
+      <li><b>Bug fix:</b> the "news off" comparison crashed on the first full run. It was fixed and everything was rerun from scratch with the same locked settings. The headline numbers were identical.</li>
+      <li>Settings tuned on 2022–23: only how bearish the market brain must be before shorting (2 options). Both options trailed the S&amp;P 500 in validation.</li>
+    </ul>
+  </section>
+</div>
+
+</div>
+<script>
+(() => {
+
+const D = __DATA__;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const pct = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(x * 100).toFixed(d) + "%";
+const fp = p => p == null || !isFinite(p) ? "–" : p < 0.001 ? "<0.001" : p.toFixed(3);
+const M = ["tokyo", "vietnam", "nordic", "aim", "moex"];
+const NAME = { tokyo: "Tokyo small caps", vietnam: "Vietnam HOSE", nordic: "Nordic small caps", aim: "UK small caps (AIM)", moex: "MOEX (Russia)" };
+const T = D.test;
+document.getElementById("study3-v-moex").textContent = pct(T.moex.full.cagr_usd);
+document.getElementById("study3-v-tokyo").textContent = pct(T.tokyo.full.cagr_usd);
+document.getElementById("study3-v-tp").textContent = fp(T.tokyo.full.p_selection);
+document.getElementById("study3-v-th").textContent = fp(D.h2.tokyo_selection);
+const beat = M.filter(m => D.h1[m] < .05).length, edge = Object.values(D.h2).filter(p => p < .05).length;
+document.getElementById("study3-stats").innerHTML = [
+  [beat + " / 5", "markets where it beat the S&P 500 (corrected)"],
+  [edge + " / 10", "stock-picking or timing edges (corrected)"],
+  [pct(T.moex.full.cagr_usd), "best market (MOEX) a year in USD"],
+  [pct(T.moex.full.spx_cagr), "S&P 500 a year over the same weeks"],
+].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+
+// results table
+let h = `<tr><th>Market</th><th>Fly a year (USD)</th><th>S&amp;P 500 a year</th><th>Beats S&amp;P p (raw / corr.)</th><th>Stock picking p (raw / corr.)</th><th>Timing p (raw / corr.)</th><th>Weeks short</th><th>Worst drop</th></tr>`;
+for (const m of M) { const f = T[m].full;
+  const pill = (raw, cor) => `${fp(raw)} / ${fp(cor)} ` + (cor < .05 ? `<span class="pill yes">yes</span>` : raw < .05 ? `<span class="pill maybe">raw only</span>` : "");
+  h += `<tr><td>${NAME[m]}</td><td class="n">${pct(f.cagr_usd)}</td><td class="n">${pct(f.spx_cagr)}</td><td class="n">${fp(f.p_beats_spx)} / ${fp(D.h1[m])}</td><td class="n">${pill(f.p_selection, D.h2[m + "_selection"])}</td><td class="n">${pill(f.p_timing, D.h2[m + "_timing"])}</td><td class="n">${(f.share_short_weeks * 100).toFixed(0)}%</td><td class="n">${pct(f.max_drawdown, 0)}</td></tr>`; }
+document.getElementById("study3-tbl").innerHTML = h;
+
+// ablations
+const AB = [["no_news", "News senses"], ["no_school", "Maths school"], ["no_love", "Love"]];
+let a = `<tr><th>Piece turned off</th>${M.map(m => `<th>${NAME[m]}</th>`).join("")}</tr>`;
+for (const [k, lab] of AB) a += `<tr><td>${lab}</td>${M.map(m => { const x = T[m][k]; return `<td class="n">${pct(x.full_minus_this_ann)}<br><span class="caption">p ${fp(x.p_full_better)}</span></td>`; }).join("")}</tr>`;
+a += `<tr><td>Shorting (vs never short)</td>${M.map(m => { const d = T[m].full.cagr_usd - T[m].never_short.cagr_usd; return `<td class="n">${pct(d)}<br><span class="caption">CAGR gap</span></td>`; }).join("")}</tr>`;
+document.getElementById("study3-abl").innerHTML = a;
+
+// school
+const W = [["random", "Random walk (nothing to find)"], ["momentum", "Momentum (trends persist)"], ["reversion", "Mean reversion (prices snap back)"], ["lowvol", "Low volatility pays"], ["news", "News predicts next week"]];
+let s = `<tr><th>Synthetic world</th><th>Fly's score</th><th>Best possible</th><th>Share of best</th><th>Exam</th></tr>`;
+const ex = D.school["0"];
+for (const [k, lab] of W) { const e = ex[k];
+  s += `<tr><td>${lab}</td><td class="n">${e.fly_ic.toFixed(3)}</td><td class="n">${e.oracle_ic.toFixed(3)}</td><td class="n">${e.pct_of_oracle == null ? "–" : (e.pct_of_oracle * 100).toFixed(0) + "%"}</td><td>${e.passed ? `<span class="pill yes">pass</span>` : `<span class="pill no">fail</span>`}</td></tr>`; }
+s += `<tr><td colspan="5" class="caption">Brain used in the test (seed 0). The two tuning brains passed 2 of 5 exams each, failing momentum, mean reversion and low volatility.</td></tr>`;
+document.getElementById("study3-school").innerHTML = s;
+
+// small multiples
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, at = {}, p) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); p && p.appendChild(e); return e; };
+function ticks(lo, hi, n = 4) { const span = hi - lo, mm = Math.pow(10, Math.floor(Math.log10(span / n))); const st = [1, 2, 2.5, 5, 10].map(x => x * mm).find(x => span / x <= n) || mm * 10; const o = []; for (let v = Math.ceil(lo / st) * st; v <= hi + 1e-12; v += st) o.push(+v.toFixed(10)); return o; }
+function minis() {
+  const host = document.getElementById("study3-minis"); host.innerHTML = "";
+  const all = M.flatMap(m => D.curves[m].fly.concat(D.curves[m].spx)); let lo = Math.min(...all, 1), hi = Math.max(...all);
+  lo = Math.floor(lo * 10) / 10; hi = Math.ceil(hi * 10) / 10;
+  for (const m of M) {
+    const c = D.curves[m], f = T[m].full;
+    const card = document.createElement("div"); card.className = "panel mini";
+    card.innerHTML = `<h3>${NAME[m]}</h3><div class="nums">Fly ${pct(f.cagr_usd)}/yr · S&amp;P ${pct(f.spx_cagr)}/yr</div><div class="chart"></div>`;
+    host.appendChild(card);
+    const box = card.querySelector(".chart");
+    const Wd = 300, H = 170, mg = { l: 34, r: 8, t: 8, b: 20 }, n = c.dates.length;
+    const sx = i => mg.l + i / (n - 1) * (Wd - mg.l - mg.r), sy = v => mg.t + (1 - (v - lo) / (hi - lo)) * (H - mg.t - mg.b);
+    const svg = el("svg", { viewBox: `0 0 ${Wd} ${H}`, role: "img" }, box), ax = el("g", { class: "axis" }, svg);
+    c.mode.forEach((md, i) => { if (md === "S") el("rect", { x: sx(i) - (Wd - mg.l - mg.r) / n / 2, y: mg.t, width: Math.max(1.5, (Wd - mg.l - mg.r) / n), height: H - mg.t - mg.b, fill: css("--short"), opacity: .18 }, svg); });
+    for (const t of ticks(lo, hi)) { el("line", { x1: mg.l, x2: Wd - mg.r, y1: sy(t), y2: sy(t), stroke: css("--grid") }, ax); el("text", { x: mg.l - 5, y: sy(t) + 3, "text-anchor": "end" }, ax).textContent = "$" + t.toFixed(1); }
+    el("line", { x1: mg.l, x2: Wd - mg.r, y1: sy(1), y2: sy(1), stroke: css("--ink-3") }, ax);
+    let last = ""; c.dates.forEach((d, i) => { const y = d.slice(0, 4); if (y !== last) { el("text", { x: sx(i), y: H - 5, "text-anchor": i === 0 ? "start" : "middle" }, ax).textContent = y; last = y; } });
+    const path = (arr, col, dash) => { let d = ""; arr.forEach((v, i) => d += (i ? "L" : "M") + sx(i).toFixed(1) + "," + sy(v).toFixed(1)); el("path", { d, fill: "none", stroke: css(col), "stroke-width": 2, "stroke-dasharray": dash ? "4 3" : "none", "stroke-linejoin": "round" }, svg); };
+    path(c.spx, "--bench", true); path(c.fly, "--fly", false);
+    const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+    const cross = el("line", { y1: mg.t, y2: H - mg.b, stroke: css("--ink-3"), opacity: 0 }, svg);
+    const dot = el("circle", { r: 3.5, fill: css("--fly"), stroke: css("--panel"), "stroke-width": 2, opacity: 0 }, svg);
+    const hit = el("rect", { x: mg.l, y: mg.t, width: Wd - mg.l - mg.r, height: H - mg.t - mg.b, fill: "transparent" }, svg);
+    hit.addEventListener("pointermove", ev => { const r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) * Wd / r.width;
+      const i = Math.max(0, Math.min(n - 1, Math.round((x - mg.l) / (Wd - mg.l - mg.r) * (n - 1))));
+      cross.setAttribute("x1", sx(i)); cross.setAttribute("x2", sx(i)); cross.setAttribute("opacity", 1); dot.setAttribute("cx", sx(i)); dot.setAttribute("cy", sy(c.fly[i])); dot.setAttribute("opacity", 1);
+      tip.innerHTML = `<b>${c.dates[i]}</b><br>Fly $${c.fly[i].toFixed(2)} · S&P $${c.spx[i].toFixed(2)}<br>${c.mode[i] === "S" ? "short" : "long"}`; tip.hidden = false; tip.style.left = (sx(i) / Wd * r.width) + "px"; tip.style.top = "30px"; });
+    hit.addEventListener("pointerleave", () => { tip.hidden = true; cross.setAttribute("opacity", 0); dot.setAttribute("opacity", 0); });
+  }
+}
+minis();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", minis);
+new MutationObserver(minis).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+})();
+</script>

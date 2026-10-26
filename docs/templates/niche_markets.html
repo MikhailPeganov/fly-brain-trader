@@ -1,0 +1,289 @@
+<title>Fly-Brain Trader · Study 2: niche markets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb;
+  --accent: #2a78d6; --accent-soft: #e6effa; --code-bg: #f1f4f2; --nav-bg: rgba(246,248,247,.92);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb; --fly: #2a78d6; --pain: #eb6834; --bench: #8b9590; --fail: #b4442c; --fail-bg: #fbeee9; --ok: #2c7a4b; --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif; --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --warn: #8a6100; --warn-bg: #fbf3df; --short: #eb6834; --ok-bg: #e7f4ec; 
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--f-body); }
+#study2 .wrap{ max-width: 880px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 40px; }
+#study2 h1, #study2 h2{ font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+#study2 h1{ font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
+#study2 h2{ font-size: 22px; font-weight: 700; }
+#study2 p{ margin: 0; max-width: 66ch; }
+#study2 .eyebrow{ font: 600 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+#study2 section{ display: flex; flex-direction: column; gap: 14px; }
+#study2 .lede{ color: var(--ink-2); font-size: 17px; }
+#study2 .verdict{ background: var(--warn-bg); border: 1px solid color-mix(in srgb, var(--warn) 35%, transparent);
+  border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+#study2 .verdict .big{ font: 700 24px/1.25 var(--f-display); color: var(--warn); }
+#study2 .stats{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+#study2 .stat{ display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+#study2 .stat b{ font: 600 22px var(--f-mono); font-variant-numeric: tabular-nums; }
+#study2 .stat span{ font-size: 13px; color: var(--ink-2); line-height: 1.35; }
+@media (max-width: 640px){
+#study2 .stats{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#study2 .panel{ background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; min-width: 0; }
+#study2 .chart{ position: relative; width: 100%; }
+#study2 .chart svg{ display: block; width: 100%; height: auto; overflow: visible; }
+#study2 .legend{ display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
+#study2 .legend i{ display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+#study2 .caption{ font-size: 14px; color: var(--ink-2); }
+#study2 .tip{ position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 6px 9px; font: 12px/1.45 var(--f-mono); color: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,.12); white-space: nowrap; transform: translate(-50%, -110%); }
+#study2 .tablewrap{ overflow-x: auto; }
+#study2 table{ border-collapse: collapse; width: 100%; font-size: 14px; min-width: 720px; }
+#study2 th, #study2 td{ text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+#study2 th{ font: 600 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+#study2 td.n{ font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+#study2 tr.group td{ font: 600 12px var(--f-mono); color: var(--ink-3); background: var(--grid); letter-spacing: .04em; }
+#study2 .pill{ display: inline-block; font: 600 11px var(--f-mono); padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+#study2 .pill.no{ color: var(--fail); background: var(--fail-bg); }
+#study2 .pill.maybe{ color: var(--warn); background: var(--warn-bg); }
+#study2 ul{ margin: 0; padding-left: 20px; max-width: 66ch; display: flex; flex-direction: column; gap: 8px; }
+#study2 .two{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 700px){
+#study2 .two{ grid-template-columns: 1fr; }
+}
+#study2 .axis text{ font: 11px var(--f-mono); fill: var(--ink-3); }
+#study2 .bars{ display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+#study2 .bar{ display: grid; grid-template-columns: 150px 1fr 64px; gap: 10px; align-items: center; }
+#study2 .bar .track{ position: relative; height: 12px; }
+#study2 .bar .fill{ position: absolute; top: 0; height: 12px; border-radius: 3px; }
+#study2 .bar .zero{ position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--ink-3); }
+#study2 .bar .v{ font-family: var(--f-mono); text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px){
+#study2 .bar{ grid-template-columns: 110px 1fr 56px; }
+}
+
+</style>
+<p style="max-width:900px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left,0px)) 0;font-size:14px"><a href="index.html" style="color:var(--fly)">&larr; All studies</a></p>
+<div id="study2"><div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:12px">
+    <div class="eyebrow">Pain/happiness fly brain · niche markets · blind test Jan 2024 – Oct 2026</div>
+    <h1>Fly-Brain Niche Markets Test</h1>
+    <p class="lede">Two long-only strategies built for the pain/happiness model were tested on four under-followed markets, with realistic costs. Settings were locked on 2022–23 data, then the fly traded 2024–26 blind. Every result is judged against the market and against a random picker following identical rules.</p>
+  </header>
+
+  <div class="verdict">
+    <div class="eyebrow" style="color:var(--warn)">Verdict</div>
+    <div class="big">No strategy is viable in any market. One hint of real skill, in Tokyo, doesn't survive correction for testing eight combinations.</div>
+    <p>The Tokyo stock picker beat the market by <b id="study2-v-tex"></b> a year after costs, and beat random picking (p = <b id="study2-v-tp"></b>). Across 8 tests, that p-value becomes <b id="study2-v-holm"></b> after correction. It deserves a live paper-trading test, not money.</p>
+    <div class="stats" id="study2-stats"></div>
+  </div>
+
+  <section>
+    <div class="eyebrow">The two strategies</div>
+    <h2>Built for slow, costly markets</h2>
+    <div class="two">
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">A · Slow picker</div>
+        <p class="caption">Every week the fly scores every tradeable stock and holds its top 20. It only sells a holding once it drops out of the top 60, so typical holds last months. <b>Happiness/pain</b> is each holding's weekly return relative to the market, minus the costs it caused.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">B · Shock rebound</div>
+        <p class="caption">When a stock crashes on its own (a move worse than 2.5 standard deviations below its market), the fly decides whether to buy at the next open and hold for 10 days. Shocks it skips still teach it, through weaker "what if" dopamine.</p></div>
+    </div>
+    <p class="caption">Both are long-only because short-selling is banned or impractical in these markets. Costs per trade are half the live quoted spread, plus the price impact of a $10,000 order, plus a 0.10% commission. Vietnam also charges a 0.1% tax on sales. Only stocks trading at least $100,000 a day are tradeable.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Results · 8 pre-registered tests</div>
+    <h2>Only the Tokyo picker came out ahead</h2>
+    <div class="panel tablewrap"><table id="study2-tbl"></table></div>
+    <p class="caption"><b>Viability:</b> did it beat an equal-weight portfolio of all tradeable stocks after costs? (one-sided Newey–West t-test). <b>Model edge:</b> did the fly beat a random picker that made the same number of trades on the same dates? (permutation test, 2,000–5,000 random runs). Corrected p-values use the Holm method across the 8 tests in each column.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Strategy A · value vs the market</div>
+    <h2>The picker against each market, after costs</h2>
+    <div class="panel">
+      <div class="legend" id="study2-leg"></div>
+      <div class="chart" id="study2-c-rel"></div>
+    </div>
+    <p class="caption">Value of the fly's portfolio divided by the market's (1.0 = level with the market). Above 1 means the fly is ahead. The UK picker roughly matched its market before costs and was then eaten by spreads. The Vietnam and Nordic pickers lost even before costs.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Tokyo · model edge</div>
+    <h2>Tokyo's picker beat almost every random picker</h2>
+    <div class="panel">
+      <div class="legend"><span><i style="background:var(--bench)"></i>Excess return of 2,000 random pickers with the same trade schedule</span><span><i style="background:var(--s1)"></i>Fly</span></div>
+      <div class="chart" id="study2-c-hist"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Exploratory checks (not pre-registered)</div>
+    <h2>Is Tokyo's result real, or something simpler?</h2>
+    <div class="two">
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+        <div class="eyebrow">10 differently wired brains</div>
+        <div class="chart" id="study2-c-seeds"></div>
+        <p class="caption">Every wiring beat random picking at p &lt; 0.05 (range <span id="study2-seed-range"></span>). So the result isn't luck in how the brain was wired. All ten learned from the same 2016–23 history, so this does not rule out luck in the period itself.</p>
+      </div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+        <div class="eyebrow">What the fly learned to hold</div>
+        <div class="bars" id="study2-tilts"></div>
+        <p class="caption">Average factor score of its holdings minus the market's, in standard-deviation units. It drifted toward quiet, low-volatility stocks near their 52-week highs and away from lottery-like spikers. These are textbook anomalies: the low-volatility effect, the MAX effect and the 52-week-high effect.</p>
+      </div>
+    </div>
+    <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+      <div class="eyebrow">Simple rules on the same schedule, Tokyo 2024–26, after costs</div>
+      <div class="bars" id="study2-baselines"></div>
+      <p class="caption">Each rule holds the top 20 stocks by one factor, with the direction chosen on 2016–23 data, using the same weekly schedule and costs. The best single factor made about 0.5% a year. A hand-built mix of the fly's three main tilts made 0.9%. The fly made <span id="study2-fly-ex2"></span>, so it did more than copy one factor. That is still one market over under three years.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Read before trusting anything here</div>
+    <h2>Limits and disclosures</h2>
+    <ul>
+      <li><b>Peek during debugging:</b> an early version of the picker was run once on Vietnam's 2024–26 data before the design was final. The only change afterwards was letting validation choose a slower trading pace, which validation costs already justified. Vietnam's picker still lost.</li>
+      <li><b>Bug fix:</b> the shock-rebound benchmark first averaged log returns, which flattered it slightly. It was corrected and everything was rerun. The conclusions didn't change.</li>
+      <li><b>Survivorship:</b> stocks were sampled from today's listings, so companies that went bust before today are missing. That flatters the markets and shock-buying. It affects the fly and the random pickers equally.</li>
+      <li><b>Costs use today's spreads</b> for the whole history. Nordic and UK small caps often raise money through deeply discounted share issues that free price data records as crashes, so those two markets are noisier.</li>
+      <li>"Tokyo small caps", "First North" and "AIM" are approximated by market-cap cut-offs, because the data source doesn't label exchange segments.</li>
+      <li>Settings were chosen across all four markets together, from 4 picker and 6 rebound options. Every option lost money on validation.</li>
+    </ul>
+  </section>
+</div>
+
+</div>
+<script>
+(() => {
+
+const D = __DATA__;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const pct = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(x * 100).toFixed(d) + "%";
+const fp = p => p == null || !isFinite(p) ? "–" : p < 0.001 ? "<0.001" : p.toFixed(3);
+const M = ["vietnam", "tokyo", "nordic", "aim"];
+const NAME = { vietnam: "Vietnam HOSE", tokyo: "Tokyo small caps", nordic: "Nordic small caps", aim: "UK small caps (AIM)" };
+const COL = { vietnam: "--s2", tokyo: "--s1", nordic: "--s3", aim: "--s4" };
+const T = D.test, tA = T.tokyo.A;
+
+document.getElementById("study2-v-tex").textContent = pct(tA.excess_ann);
+document.getElementById("study2-v-tp").textContent = fp(tA.p_edge);
+document.getElementById("study2-v-holm").textContent = fp(D.holm_e.tokyo_A);
+document.getElementById("study2-fly-ex2").textContent = pct(tA.excess_ann);
+const nViable = Object.values(D.holm_v).filter(p => p < 0.05).length;
+const nEdge = Object.values(D.holm_e).filter(p => p < 0.05).length;
+document.getElementById("study2-stats").innerHTML = [
+  [nViable + " / 8", "strategy–market pairs that beat the market (corrected)"],
+  [nEdge + " / 8", "pairs where the fly beat random picking (corrected)"],
+  [pct(tA.excess_ann), "Tokyo picker vs market per year, after costs"],
+  [pct(tA.gross_excess_ann), "Tokyo picker before costs; costs took the rest"],
+].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+
+// table
+const pill = p => p < 0.05 ? `<span class="pill maybe">yes</span>` : `<span class="pill no">no</span>`;
+let h = `<tr><th>Market</th><th>Return vs market, after costs</th><th>Before costs</th><th>Viability p (raw / corrected)</th><th>Edge vs random p (raw / corrected)</th><th>Edge?</th></tr>`;
+h += `<tr class="group"><td colspan="6">A · Slow picker (holds 20 stocks, weekly decisions)</td></tr>`;
+for (const m of M) { const r = T[m].A;
+  h += `<tr><td>${NAME[m]}</td><td class="n">${pct(r.excess_ann)} a year</td><td class="n">${pct(r.gross_excess_ann)}</td><td class="n">${fp(r.p_viability)} / ${fp(D.holm_v[m + "_A"])}</td><td class="n">${fp(r.p_edge)} / ${fp(D.holm_e[m + "_A"])}</td><td>${r.p_edge < 0.05 ? `<span class="pill maybe">raw only</span>` : pill(1)}</td></tr>`; }
+h += `<tr class="group"><td colspan="6">B · Shock rebound (buy after a crash, hold 10 days)</td></tr>`;
+for (const m of M) { const r = T[m].B;
+  h += `<tr><td>${NAME[m]}</td><td class="n">${pct(r.excess_per_trade)} per trade (${r.n_trades} trades)</td><td class="n">${pct(r.gross_excess_per_trade)}</td><td class="n">${fp(r.p_viability)} / ${fp(D.holm_v[m + "_B"])}</td><td class="n">${fp(r.p_edge)} / ${fp(D.holm_e[m + "_B"])}</td><td>${r.p_edge < 0.05 ? `<span class="pill maybe">raw only</span>` : pill(1)}</td></tr>`; }
+h += `<tr><td colspan="6" class="caption">After costs, buying every shock lost money in all four markets (${M.map(m => pct(T[m].B.buy_all_excess)).join(", ")} per trade), so crashed small caps kept underperforming instead of bouncing back.</td></tr>`;
+document.getElementById("study2-tbl").innerHTML = h;
+
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, a = {}, p) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+function ticks(lo, hi, n = 5) { const span = hi - lo, m = Math.pow(10, Math.floor(Math.log10(span / n)));
+  const s = [1, 2, 2.5, 5, 10].map(x => x * m).find(x => span / x <= n) || m * 10; const o = []; for (let v = Math.ceil(lo / s) * s; v <= hi + 1e-12; v += s) o.push(+v.toFixed(10)); return o; }
+
+function relChart() {
+  const box = document.getElementById("study2-c-rel"); box.innerHTML = "";
+  document.getElementById("study2-leg").innerHTML = M.map(m => `<span><i style="background:var(${COL[m]})"></i>${NAME[m]}</span>`).join("");
+  const W = 800, H = 300, mg = { l: 46, r: 120, t: 10, b: 28 };
+  const t0 = Date.parse("2024-01-01"), t1 = Date.parse("2026-10-31");
+  const all = M.flatMap(m => D.curves[m].rel); let lo = Math.min(...all, 1), hi = Math.max(...all, 1); const pad = (hi - lo) * .06; lo -= pad; hi += pad;
+  const sx = d => mg.l + (Date.parse(d) - t0) / (t1 - t0) * (W - mg.l - mg.r), sy = v => mg.t + (1 - (v - lo) / (hi - lo)) * (H - mg.t - mg.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box), ax = el("g", { class: "axis" }, svg);
+  for (const t of ticks(lo, hi)) { el("line", { x1: mg.l, x2: W - mg.r, y1: sy(t), y2: sy(t), stroke: css("--grid") }, ax); el("text", { x: mg.l - 8, y: sy(t) + 4, "text-anchor": "end" }, ax).textContent = t.toFixed(2); }
+  el("line", { x1: mg.l, x2: W - mg.r, y1: sy(1), y2: sy(1), stroke: css("--ink-3") }, ax);
+  for (const y of ["2024", "2025", "2026"]) el("text", { x: sx(y + "-01-01"), y: H - 8, "text-anchor": "middle" }, ax).textContent = y;
+  const ends = [];
+  for (const m of M) { const c = D.curves[m]; let d = ""; c.rel.forEach((v, i) => d += (i ? "L" : "M") + sx(c.dates[i]).toFixed(1) + "," + sy(v).toFixed(1));
+    el("path", { d, fill: "none", stroke: css(COL[m]), "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+    ends.push({ m, y: sy(c.rel[c.rel.length - 1]), v: c.rel[c.rel.length - 1], x: sx(c.dates[c.dates.length - 1]) }); }
+  ends.sort((a, b) => a.y - b.y); for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 15) ends[i].y = ends[i - 1].y + 15;
+  for (const e of ends) { el("circle", { cx: e.x, cy: sy(e.v), r: 4, fill: css(COL[e.m]), stroke: css("--panel"), "stroke-width": 2 }, svg);
+    const t = el("text", { x: e.x + 10, y: e.y + 4, fill: css("--ink-2"), "font-size": 12, "font-family": "var(--f-mono)" }, svg); t.textContent = NAME[e.m].split(" ")[0] + " " + e.v.toFixed(2); }
+  // hover
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  const cross = el("line", { y1: mg.t, y2: H - mg.b, stroke: css("--ink-3"), opacity: 0 }, svg);
+  const hit = el("rect", { x: mg.l, y: mg.t, width: W - mg.l - mg.r, height: H - mg.t - mg.b, fill: "transparent" }, svg);
+  hit.addEventListener("pointermove", ev => { const r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width;
+    const ts = t0 + (x - mg.l) / (W - mg.l - mg.r) * (t1 - t0); cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.setAttribute("opacity", 1);
+    let html = ""; for (const m of M) { const c = D.curves[m]; let best = 0; c.dates.forEach((d, i) => { if (Math.abs(Date.parse(d) - ts) < Math.abs(Date.parse(c.dates[best]) - ts)) best = i; }); if (!html) html = `<b>${c.dates[best]}</b>`; html += `<br>${NAME[m]}: ${c.rel[best].toFixed(3)}`; }
+    tip.innerHTML = html; tip.hidden = false; tip.style.left = (x / W * r.width) + "px"; tip.style.top = "40px"; });
+  hit.addEventListener("pointerleave", () => { tip.hidden = true; cross.setAttribute("opacity", 0); });
+}
+
+function hist() {
+  const box = document.getElementById("study2-c-hist"); box.innerHTML = "";
+  const { counts, edges, observed } = D.hist, W = 800, H = 250, mg = { l: 20, r: 14, t: 44, b: 30 };
+  const lo = Math.min(edges[0], observed) - .01, hi = Math.max(edges[edges.length - 1], observed) + .02, cmax = Math.max(...counts);
+  const sx = v => mg.l + (v - lo) / (hi - lo) * (W - mg.l - mg.r), sy = c => mg.t + (1 - c / cmax) * (H - mg.t - mg.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box), ax = el("g", { class: "axis" }, svg);
+  for (const t of ticks(lo, hi, 8)) el("text", { x: sx(t), y: H - 8, "text-anchor": "middle" }, ax).textContent = pct(t, 0);
+  el("line", { x1: mg.l, x2: W - mg.r, y1: H - mg.b, y2: H - mg.b, stroke: css("--rule") }, ax);
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  counts.forEach((c, i) => { const x0 = sx(edges[i]) + 1, x1 = sx(edges[i + 1]) - 1;
+    const r = el("rect", { x: x0, y: sy(c), width: Math.max(1, x1 - x0), height: H - mg.b - sy(c), fill: css("--bench"), opacity: edges[i] >= observed ? 1 : .45, rx: 2 }, svg);
+    r.addEventListener("pointerenter", () => { const b = svg.getBoundingClientRect(); tip.innerHTML = `${pct(edges[i])} to ${pct(edges[i + 1])} a year<br>${c} random pickers`; tip.hidden = false; tip.style.left = ((x0 + x1) / 2 / W * b.width) + "px"; tip.style.top = (sy(c) / H * b.height) + "px"; });
+    r.addEventListener("pointerleave", () => tip.hidden = true); });
+  el("line", { x1: sx(observed), x2: sx(observed), y1: 8, y2: H - mg.b, stroke: css("--s1"), "stroke-width": 2.5 }, svg);
+  const t = el("text", { x: sx(observed) - 8, y: 18, "text-anchor": "end", fill: css("--ink"), "font-size": 13, "font-family": "var(--f-mono)" }, svg);
+  t.textContent = `Fly ${pct(observed)}/yr · beat ${(100 - D.test.tokyo.A.p_edge * 100).toFixed(0)}% of random pickers`;
+}
+
+function seeds() {
+  const box = document.getElementById("study2-c-seeds"); box.innerHTML = ""; const ps = D.checks.seeds.map(s => s.p_edge);
+  document.getElementById("study2-seed-range").textContent = Math.min(...ps).toFixed(3) + "–" + Math.max(...ps).toFixed(3);
+  const W = 400, H = 70, sx = p => 14 + p / 0.2 * (W - 28);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box), ax = el("g", { class: "axis" }, svg);
+  el("rect", { x: sx(0), y: 8, width: sx(.05) - sx(0), height: 34, fill: css("--warn-bg") }, svg);
+  el("line", { x1: sx(0), x2: sx(.2), y1: 25, y2: 25, stroke: css("--rule") }, svg);
+  for (const t of [0, .05, .1, .15, .2]) el("text", { x: sx(t), y: 62, "text-anchor": t === 0 ? "start" : t === .2 ? "end" : "middle" }, ax).textContent = t === 0 ? "p = 0" : t;
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  D.checks.seeds.forEach((s, i) => { const c = el("circle", { cx: sx(s.p_edge), cy: 25 + ((i % 3) - 1) * 7, r: 5, fill: css("--s1"), stroke: css("--panel"), "stroke-width": 2 }, svg);
+    c.addEventListener("pointerenter", () => { const b = svg.getBoundingClientRect(); tip.innerHTML = `Wiring ${s.seed}<br>p = ${s.p_edge.toFixed(3)}<br>${pct(s.excess_ann)}/yr`; tip.hidden = false; tip.style.left = (sx(s.p_edge) / W * b.width) + "px"; tip.style.top = "6px"; });
+    c.addEventListener("pointerleave", () => tip.hidden = true); });
+}
+
+function bars(id, items, fmt, maxAbs) {
+  const host = document.getElementById(id);
+  host.innerHTML = items.map(([label, v, color]) => { const w = Math.abs(v) / maxAbs * 50, left = v >= 0 ? 50 : 50 - w;
+    return `<div class="bar"><span>${label}</span><div class="track"><div class="zero" style="left:50%"></div><div class="fill" style="left:${left}%;width:${w}%;background:var(${color})"></div></div><span class="v">${fmt(v)}</span></div>`; }).join("");
+}
+const FN = { mom_12_1: "12-1 momentum", rev_1m: "1-month return", rev_1w: "1-week return", high_52w: "Near 52-week high", vol_60: "Volatility", max_21: "Biggest daily jump (MAX)",
+  illiq: "Illiquidity", volu_trend: "Volume trend", ma200: "Vs 200-day average", resid_3m: "3-month vs market", zero_days: "No-trade days" };
+function drawAll() {
+  relChart(); hist(); seeds();
+  const tl = Object.entries(D.checks.tilts).filter(([k]) => FN[k]).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1])).slice(0, 6).map(([k, v]) => [FN[k], v, "--s1"]);
+  bars("study2-tilts", tl, v => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2), 1.2);
+  const bl = D.checks.baselines.map(b => [`${b.direction === "low" ? "Low" : "High"} ${FN[b.factor].toLowerCase()}`, b.excess_ann, b.excess_ann >= 0 ? "--s3" : "--bench"]).sort((a, b) => b[1] - a[1]);
+  const comp = D.checks.textbook_composite.excess_ann;
+  bars("study2-baselines", [["Fly brain", D.test.tokyo.A.excess_ann, "--s1"], ["Textbook mix", comp, "--s3"], ...bl.slice(0, 6)], v => pct(v), 0.55);
+}
+drawAll();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+})();
+</script>

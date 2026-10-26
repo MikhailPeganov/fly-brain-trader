@@ -1,0 +1,337 @@
+<title>Fly-Brain Trader · Study 1: US blind test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb;
+  --accent: #2a78d6; --accent-soft: #e6effa; --code-bg: #f1f4f2; --nav-bg: rgba(246,248,247,.92);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --bg: #f6f8f7; --panel: #ffffff; --ink: #121815; --ink-2: #4a5550; --ink-3: #75807a; --rule: #dde3e0; --grid: #e9eeeb; --fly: #2a78d6; --pain: #eb6834; --bench: #8b9590; --fail: #b4442c; --fail-bg: #fbeee9; --ok: #2c7a4b; --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif; --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --warn: #8a6100; --warn-bg: #fbf3df; --short: #eb6834; --ok-bg: #e7f4ec; 
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27;
+  --accent: #6aa5ee; --accent-soft: #1b2a3c; --code-bg: #161b18; --nav-bg: rgba(18,22,20,.92);
+  --bg: #121614; --panel: #1a1f1c; --ink: #eef2ef; --ink-2: #b8c2bc; --ink-3: #8a958f; --rule: #2c3430; --grid: #242b27; --fly: #3987e5; --pain: #d95926; --bench: #7f8a84; --fail: #ef8a6c; --fail-bg: #2a1d18; --ok: #6cc290; --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --warn: #e3b450; --warn-bg: #2a2416; --short: #d95926; --ok-bg: #18271f;  color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--f-body); }
+#study1 .wrap{ max-width: 860px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 40px; }
+#study1 h1, #study1 h2{ font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+#study1 h1{ font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
+#study1 h2{ font-size: 22px; font-weight: 700; }
+#study1 p{ margin: 0; max-width: 66ch; }
+#study1 .eyebrow{ font: 600 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+#study1 section{ display: flex; flex-direction: column; gap: 14px; }
+#study1 .lede{ color: var(--ink-2); font-size: 17px; }
+#study1 .verdict{ background: var(--fail-bg); border: 1px solid color-mix(in srgb, var(--fail) 35%, transparent);
+  border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+#study1 .verdict .big{ font: 700 26px/1.2 var(--f-display); color: var(--fail); }
+#study1 .stats{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+#study1 .stat{ display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+#study1 .stat b{ font: 600 24px var(--f-mono); font-variant-numeric: tabular-nums; }
+#study1 .stat span{ font-size: 13px; color: var(--ink-2); line-height: 1.35; }
+@media (max-width: 620px){
+#study1 .stats{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#study1 .panel{ background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; min-width: 0; }
+#study1 .chart{ position: relative; width: 100%; }
+#study1 .chart svg{ display: block; width: 100%; height: auto; overflow: visible; }
+#study1 .legend{ display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
+#study1 .legend i{ display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+#study1 .legend i.dash{ background: repeating-linear-gradient(90deg, var(--bench) 0 4px, transparent 4px 7px) !important; }
+#study1 .caption{ font-size: 14px; color: var(--ink-2); }
+#study1 .tip{ position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--rule);
+  border-radius: 6px; padding: 6px 9px; font: 12px/1.45 var(--f-mono); color: var(--ink);
+  box-shadow: 0 4px 14px rgba(0,0,0,.12); white-space: nowrap; transform: translate(-50%, -110%); }
+#study1 .tablewrap{ overflow-x: auto; }
+#study1 table{ border-collapse: collapse; width: 100%; font-size: 14px; min-width: 620px; }
+#study1 th, #study1 td{ text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+#study1 th{ font: 600 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+#study1 td.n{ font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+#study1 .pill{ display: inline-block; font: 600 11px var(--f-mono); padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+#study1 .pill.no{ color: var(--fail); background: var(--fail-bg); }
+#study1 .pill.yes{ color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+#study1 .tickers{ font: 13px/1.8 var(--f-mono); color: var(--ink-2); }
+#study1 ul{ margin: 0; padding-left: 20px; max-width: 66ch; display: flex; flex-direction: column; gap: 8px; }
+#study1 code{ font: 0.9em var(--f-mono); background: var(--grid); padding: 1px 5px; border-radius: 4px; }
+#study1 .two{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 700px){
+#study1 .two{ grid-template-columns: 1fr; }
+}
+#study1 .axis text{ font: 11px var(--f-mono); fill: var(--ink-3); }
+
+</style>
+<p style="max-width:900px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left,0px)) 0;font-size:14px"><a href="index.html" style="color:var(--fly)">&larr; All studies</a></p>
+<div id="study1"><div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:12px">
+    <div class="eyebrow">Mushroom-body trading model · blind test · 24 Oct 2026</div>
+    <h1>Fly-Brain Trader Blind Test</h1>
+    <p class="lede">A Drosophila-inspired network that feels "pain" when a trade loses and "happiness" when it wins was pre-trained on 40 stocks, then traded 20 stocks and a trading day it had never seen. Four statistical tests asked whether its results reflect a real strategy or luck.</p>
+  </header>
+
+  <div class="verdict">
+    <div class="eyebrow" style="color:var(--fail)">Verdict</div>
+    <div class="big">No evidence of a real strategy. Its results are consistent with luck.</div>
+    <p>On the pre-registered primary test (20 hidden stocks, Jan 2024 to Oct 2026), shuffling the fly's own trades in time produced a Sharpe ratio at least as good <b id="study1-v-perm"></b> of the time. We cannot reject "it is just noise" at the 5% level.</p>
+    <div class="stats" id="study1-stats"></div>
+  </div>
+
+  <section>
+    <div class="eyebrow">What the model was not given</div>
+    <h2>Two kinds of hidden information</h2>
+    <p>Stocks were split at random before anything was trained. The fly learned only from the 40 training stocks, and its settings were chosen on 2022–2023 data from those same stocks. The settings were locked in code before any test data was read.</p>
+    <div class="two">
+      <div class="panel"><div class="eyebrow">20 hidden stocks</div><div class="tickers" id="study1-hidden"></div></div>
+      <div class="panel"><div class="eyebrow">Hidden periods</div>
+        <p class="caption"><b>Daily:</b> 2 Jan 2024 – 22 Oct 2026 (705 trading days).<br><b>Live day:</b> Fri 23 Oct 2026, 5-minute bars, replayed bar by bar. Pre-trained on earlier days of the training stocks only.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Daily blind test</div>
+    <h2>The fly barely moved while the market rose</h2>
+    <div class="panel">
+      <div class="legend"><span><i style="background:var(--fly)"></i>Fly brain, net of 2 bp costs</span><span><i class="dash"></i>Buy-and-hold, same 20 stocks, same risk scaling</span></div>
+      <div class="chart" id="study1-c-equity"></div>
+    </div>
+    <p class="caption">Growth of $1 on the hidden stocks. The fly ran long and short about equally and stayed flat about 45% of the time, so it took little risk. It ended up <span id="study1-fly-tot"></span> against <span id="study1-bench-tot"></span> for simply holding the stocks. Its market beta was close to zero, so the gap is not a timing skill being masked.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Primary hypothesis test</div>
+    <h2>Shuffled versions of its own trades often did as well</h2>
+    <div class="panel">
+      <div class="legend"><span><i style="background:var(--bench)"></i>Sharpe of 5,000 time-shuffled copies of the fly's positions</span><span><i style="background:var(--fly)"></i>Actual fly</span></div>
+      <div class="chart" id="study1-c-hist"></div>
+    </div>
+    <p class="caption">Each shuffle rotates every stock's position history by a random offset. That keeps the fly's long/short mix, position sizes and turnover identical, and only breaks the link between <i>when</i> it traded and what happened next. A skilled model would sit far to the right of this cloud. The fly sits inside it.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Live-day replay · Fri 23 Oct 2026</div>
+    <h2>One unseen day: a small gross gain, erased by costs</h2>
+    <div class="panel">
+      <div class="legend"><span><i style="background:var(--fly)"></i>Fly, net of 1 bp costs</span><span><i style="background:var(--pain)"></i>Fly, before costs</span><span><i class="dash"></i>Buy-and-hold</span></div>
+      <div class="chart" id="study1-c-live"></div>
+    </div>
+    <p class="caption">Growth of $1 across the session on the 20 hidden stocks (first hour is warm-up for the 1-hour features). Permutation p-value <span id="study1-live-p"></span> before costs. A single day has very little statistical power, so I also ran the last 10 days in the same way: before-cost p = <span id="study1-l10-p"></span>, and it lost money after costs.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Inside the fly</div>
+    <h2>Pain and happiness during the daily test</h2>
+    <div class="panel">
+      <div class="legend"><span><i style="background:var(--fly)"></i>Happiness (reward dopamine)</span><span><i style="background:var(--pain)"></i>Pain (punishment dopamine, losses weighted 2×)</span></div>
+      <div class="chart" id="study1-c-feel"></div>
+    </div>
+    <p class="caption">21-day average per stock per day, in volatility units. Pain sits above happiness because losses hurt twice as much as equal gains. The gap between them stayed the same in each third of the test (about −0.11), so the fly kept trading and kept learning but never found a way to make its trades hurt less.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">All tests</div>
+    <h2>Every test, in one place</h2>
+    <div class="panel tablewrap"><table id="study1-tests"></table></div>
+    <p class="caption">One-sided tests of "the fly makes money / has information". The Newey–West t-test corrects for autocorrelation; the bootstrap resamples blocks of days; the alpha regression strips out market exposure; the hit-rate test compares against the hit rate a random trader with the same long/short mix would get.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Can the test be trusted?</div>
+    <h2>The test catches real skill and ignores pure noise</h2>
+    <div class="two">
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+        <div class="eyebrow">Placebo: 40 markets with no signal</div>
+        <div class="chart" id="study1-c-placebo"></div>
+        <p class="caption">The whole pipeline rerun on prices whose daily returns had random signs, so nothing is predictable. <b id="study1-fpr"></b> of runs came out "significant", matching the 5% you expect by chance.</p>
+      </div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+        <div class="eyebrow">Power check: a planted signal</div>
+        <table style="min-width:0">
+          <tr><th>Planted predictability (IC)</th><th>Permutation p</th></tr>
+          <tr><td>None (0.00)</td><td class="n">0.375</td></tr>
+          <tr><td>Weak (0.03)</td><td class="n">0.056</td></tr>
+          <tr><td>Moderate (0.06)</td><td class="n">0.003</td></tr>
+        </table>
+        <p class="caption">On synthetic data where one factor truly predicts returns, the fly learns it and the test flags it. Real-world edges are usually nearer the weak row, so the daily test can just about see one.</p>
+      </div>
+    </div>
+    <div class="panel" style="display:flex;flex-direction:column;gap:8px">
+      <div class="eyebrow">10 differently wired brains (random connectome seeds)</div>
+      <div class="chart" id="study1-c-seeds"></div>
+      <p class="caption">Only one of ten random wirings crossed p &lt; 0.05, which is what chance alone predicts.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">How the brain works</div>
+    <h2>Mushroom body, rewired for markets</h2>
+    <ul>
+      <li><b>Senses:</b> 16 factors from published quant research (short-term reversal, 12-1 momentum, 52-week high, low-volatility, abnormal volume, overnight gap and others) act as odours. Each is encoded by 5 projection neurons with different tuning, 80 in total.</li>
+      <li><b>Kenyon cells:</b> 2,000 cells, each wired to 7 random projection neurons, matching fly connectome statistics. One inhibitory neuron (APL) keeps only the top 5% active.</li>
+      <li><b>Output neurons:</b> a "go long" and a "go short" neuron read the Kenyon cells. Their imbalance sets the position size.</li>
+      <li><b>Feelings:</b> after each trade, reward dopamine (happiness) or punishment dopamine (pain, 2× for losses) strengthens or weakens the synapses of the Kenyon cells that were active. A weaker "what if" signal teaches the side it did not take, and a run of pain makes it more cautious.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="eyebrow">Read before trusting anything here</div>
+    <h2>Limits of this test</h2>
+    <ul>
+      <li>The first live-day run looked brilliant (p = 0.001). That was a look-ahead bug: one feature used the day's own closing price. After the fix the edge vanished. Any result that looks this good deserves the same suspicion.</li>
+      <li>"Live" means a replay of real, unseen data. Markets are closed today, and no real orders were placed.</li>
+      <li>The universe is today's large caps, which flatters buy-and-hold (survivorship bias). It does not flatter the fly, which was market-neutral.</li>
+      <li>The pain and happiness are reward signals that shape learning. The model does not experience anything.</li>
+      <li>Settings were picked from 9 combinations on validation data, and every one of them lost money there, an early hint of no edge.</li>
+    </ul>
+  </section>
+</div>
+
+</div>
+<script>
+(() => {
+
+const D = __DATA__;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const pct = (x, d=1) => (x*100).toFixed(d) + "%";
+const f2 = x => (x >= 0 ? "" : "−") + Math.abs(x).toFixed(2);
+const fp = p => p < 0.001 ? "<0.001" : p.toFixed(3);
+const T = D.tests;
+
+// verdict + stats
+document.getElementById("study1-v-perm").textContent = pct(T.hidden.perm_p_net, 1);
+const stats = [
+  [f2(T.hidden.sharpe_net), "Net Sharpe on hidden stocks (buy-and-hold: " + f2(T.hidden.benchmark_sharpe) + ")"],
+  ["p = " + fp(T.hidden.perm_p_net), "Primary permutation test; needed &lt; 0.05"],
+  [pct(T.hidden.hit.hit), "Correct direction calls (chance: " + pct(T.hidden.hit.p0) + ")"],
+  [(T.live.total_return_net*100).toFixed(3) + "%", "Net return on the unseen live day"],
+];
+document.getElementById("study1-stats").innerHTML = stats.map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+document.getElementById("study1-hidden").textContent = D.universe.hidden.join("  ");
+document.getElementById("study1-fly-tot").textContent = (T.hidden.total_return_net >= 0 ? "+" : "") + pct(T.hidden.total_return_net);
+document.getElementById("study1-bench-tot").textContent = "+" + pct(D.daily.bench[D.daily.bench.length-1] - 1);
+document.getElementById("study1-live-p").textContent = fp(T.live.perm_p_gross);
+document.getElementById("study1-l10-p").textContent = fp(T.last10.perm_p_gross);
+document.getElementById("study1-fpr").textContent = Math.round(D.placebo.false_positive_rate*40) + " of 40 (" + pct(D.placebo.false_positive_rate, 0) + ")";
+
+// tests table
+const rows = [
+  ["Daily, 20 hidden stocks (primary)", T.hidden, 252],
+  ["Daily, 40 training stocks, same dates", T.training, 252],
+  ["Live day 23 Oct, hidden stocks", T.live, 0],
+  ["Last 10 days, hidden stocks", T.last10, 0],
+];
+const pill = p => `<span class="pill ${p < 0.05 ? "yes" : "no"}">${p < 0.05 ? "significant" : "not significant"}</span>`;
+let h = "<tr><th>Test window</th><th>Net Sharpe</th><th>Permutation p (net / gross)</th><th>Newey–West p</th><th>Bootstrap p</th><th>Alpha p</th><th>Hit rate vs chance</th><th>Skill?</th></tr>";
+for (const [name, r, per] of rows) {
+  const sh = r.sharpe_net ?? r.sharpe_net_ann;
+  h += `<tr><td>${name}</td><td class="n">${f2(sh)}${per ? "" : "*"}</td><td class="n">${fp(r.perm_p_net)} / ${fp(r.perm_p_gross)}</td><td class="n">${fp(r.nw_p)}</td><td class="n">${r.bootstrap_p != null ? fp(r.bootstrap_p) : "–"}</td><td class="n">${fp(r.alpha.p_alpha)}</td><td class="n">${pct(r.hit.hit)} vs ${pct(r.hit.p0)} (p ${fp(r.hit.p)})</td><td>${pill(Math.min(r.perm_p_net, r.perm_p_gross))}</td></tr>`;
+}
+h += `<tr><td colspan="8" class="caption">* Intraday Sharpe ratios are annualised from 5-minute bars and look extreme because one day of bars is a tiny sample.</td></tr>`;
+document.getElementById("study1-tests").innerHTML = h;
+
+// ---------- tiny SVG chart kit ----------
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+function niceTicks(lo, hi, n = 5) {
+  const span = hi - lo, step0 = span / n, mag = Math.pow(10, Math.floor(Math.log10(step0)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => span / s <= n) || mag * 10;
+  const out = []; for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-12; v += step) out.push(+v.toFixed(10)); return out;
+}
+function lineChart(id, xs, series, { yfmt = v => v.toFixed(2), xlabels, H = 260, base = null } = {}) {
+  const box = document.getElementById(id); box.innerHTML = "";
+  const W = 800, m = { l: 52, r: 14, t: 10, b: 28 };
+  const all = series.flatMap(s => s.y.filter(v => v != null));
+  let lo = Math.min(...all), hi = Math.max(...all); const pad = (hi - lo) * 0.08 || 0.01; lo -= pad; hi += pad;
+  const sx = i => m.l + (i / (xs.length - 1)) * (W - m.l - m.r), sy = v => m.t + (1 - (v - lo) / (hi - lo)) * (H - m.t - m.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box);
+  const ax = el("g", { class: "axis" }, svg);
+  for (const t of niceTicks(lo, hi)) {
+    el("line", { x1: m.l, x2: W - m.r, y1: sy(t), y2: sy(t), stroke: css("--grid"), "stroke-width": 1 }, ax);
+    el("text", { x: m.l - 8, y: sy(t) + 4, "text-anchor": "end" }, ax).textContent = yfmt(t);
+  }
+  if (base != null) el("line", { x1: m.l, x2: W - m.r, y1: sy(base), y2: sy(base), stroke: css("--ink-3"), "stroke-width": 1 }, ax);
+  for (const [i, lab] of xlabels) el("text", { x: sx(i), y: H - 8, "text-anchor": "middle" }, ax).textContent = lab;
+  for (const s of series) {
+    let d = ""; s.y.forEach((v, i) => { if (v == null) return; d += (d ? "L" : "M") + sx(i).toFixed(1) + "," + sy(v).toFixed(1); });
+    el("path", { d, fill: "none", stroke: css(s.color), "stroke-width": 2, "stroke-dasharray": s.dash ? "5 4" : "none", "stroke-linejoin": "round" }, svg);
+  }
+  // hover crosshair
+  const cross = el("line", { y1: m.t, y2: H - m.b, stroke: css("--ink-3"), "stroke-width": 1, opacity: 0 }, svg);
+  const dots = series.map(s => el("circle", { r: 4, fill: css(s.color), stroke: css("--panel"), "stroke-width": 2, opacity: 0 }, svg));
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent" }, svg);
+  const move = ev => {
+    const r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width;
+    const i = Math.max(0, Math.min(xs.length - 1, Math.round((x - m.l) / (W - m.l - m.r) * (xs.length - 1))));
+    cross.setAttribute("x1", sx(i)); cross.setAttribute("x2", sx(i)); cross.setAttribute("opacity", 1);
+    series.forEach((s, k) => { const v = s.y[i]; if (v == null) { dots[k].setAttribute("opacity", 0); return; } dots[k].setAttribute("cx", sx(i)); dots[k].setAttribute("cy", sy(v)); dots[k].setAttribute("opacity", 1); });
+    tip.innerHTML = `<b>${xs[i]}</b><br>` + series.map(s => `${s.name}: ${s.y[i] == null ? "–" : yfmt(s.y[i])}`).join("<br>");
+    tip.hidden = false; tip.style.left = (sx(i) / W * r.width) + "px"; tip.style.top = (m.t / H * r.height + 30) + "px";
+  };
+  hit.addEventListener("pointermove", move); hit.addEventListener("pointerleave", () => { tip.hidden = true; cross.setAttribute("opacity", 0); dots.forEach(d => d.setAttribute("opacity", 0)); });
+}
+function yearLabels(dates) { const out = []; let last = ""; dates.forEach((d, i) => { const y = d.slice(0, 4); if (y !== last) { out.push([i, y]); last = y; } }); return out; }
+
+function drawAll() {
+  const dd = D.daily;
+  lineChart("study1-c-equity", dd.dates, [
+    { name: "Fly", y: dd.fly, color: "--fly" }, { name: "Buy & hold", y: dd.bench, color: "--bench", dash: true }],
+    { yfmt: v => "$" + v.toFixed(2), xlabels: yearLabels(dd.dates), base: 1 });
+  lineChart("study1-c-feel", dd.dates, [
+    { name: "Happiness", y: dd.happy, color: "--fly" }, { name: "Pain", y: dd.pain, color: "--pain" }],
+    { yfmt: v => v.toFixed(2), xlabels: yearLabels(dd.dates), H: 220 });
+  const lv = D.live, lab = []; lv.times.forEach((t, i) => { if (t.endsWith(":00") || i === 0) lab.push([i, t]); });
+  lineChart("study1-c-live", lv.times, [
+    { name: "Net", y: lv.net, color: "--fly" }, { name: "Gross", y: lv.gross, color: "--pain" }, { name: "Buy & hold", y: lv.bench, color: "--bench", dash: true }],
+    { yfmt: v => "$" + v.toFixed(4), xlabels: lab.filter((_, k) => k % 1 === 0), base: 1 });
+  histogram(); strip("study1-c-placebo", D.placebo.reps.map(r => r.perm_p), "--bench"); strip("study1-c-seeds", D.seeds.map(r => r.perm_p), "--fly");
+}
+
+function histogram() {
+  const box = document.getElementById("study1-c-hist"); box.innerHTML = "";
+  const { counts, edges, observed } = D.hist, W = 800, H = 240, m = { l: 44, r: 14, t: 26, b: 30 };
+  const lo = Math.min(edges[0], observed) - 0.05, hi = Math.max(edges[edges.length - 1], observed) + 0.05, cmax = Math.max(...counts);
+  const sx = v => m.l + (v - lo) / (hi - lo) * (W - m.l - m.r), sy = c => m.t + (1 - c / cmax) * (H - m.t - m.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box); const ax = el("g", { class: "axis" }, svg);
+  for (const t of niceTicks(lo, hi, 8)) el("text", { x: sx(t), y: H - 8, "text-anchor": "middle" }, ax).textContent = t.toFixed(1);
+  el("text", { x: m.l - 8, y: m.t + 4, "text-anchor": "end" }, ax).textContent = cmax;
+  el("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, stroke: css("--rule") }, ax);
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  counts.forEach((c, i) => {
+    const x0 = sx(edges[i]) + 1, x1 = sx(edges[i + 1]) - 1;
+    const r = el("rect", { x: x0, y: sy(c), width: Math.max(1, x1 - x0), height: H - m.b - sy(c), fill: css(edges[i] >= observed ? "--bench" : "--grid"), rx: 2 }, svg);
+    if (edges[i] < observed) r.setAttribute("fill", css("--bench")), r.setAttribute("opacity", .45);
+    r.addEventListener("pointerenter", () => { const b = svg.getBoundingClientRect(); tip.innerHTML = `Sharpe ${edges[i].toFixed(2)} to ${edges[i+1].toFixed(2)}<br>${c} shuffles`; tip.hidden = false; tip.style.left = ((x0 + x1) / 2 / W * b.width) + "px"; tip.style.top = (sy(c) / H * b.height) + "px"; });
+    r.addEventListener("pointerleave", () => tip.hidden = true);
+  });
+  el("line", { x1: sx(observed), x2: sx(observed), y1: m.t - 6, y2: H - m.b, stroke: css("--fly"), "stroke-width": 2.5 }, svg);
+  const t = el("text", { x: sx(observed) + 8, y: m.t + 4, fill: css("--ink"), "font-size": 13, "font-family": "var(--f-mono)" }, svg);
+  t.textContent = `Fly: ${observed.toFixed(2)} · ${pct(D.tests.hidden.perm_p_net)} of shuffles did as well (darker bars)`;
+  if (sx(observed) > W * 0.55) { t.setAttribute("x", sx(observed) - 8); t.setAttribute("text-anchor", "end"); }
+}
+
+function strip(id, ps, color) {
+  const box = document.getElementById(id); box.innerHTML = "";
+  const W = 800, H = 70, m = { l: 14, r: 14 }, sx = p => m.l + p * (W - m.l - m.r);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" }, box); const ax = el("g", { class: "axis" }, svg);
+  el("rect", { x: sx(0), y: 8, width: sx(0.05) - sx(0), height: 34, fill: css("--fail-bg") }, svg);
+  el("line", { x1: sx(0), x2: sx(1), y1: 25, y2: 25, stroke: css("--rule") }, svg);
+  for (const t of [0, 0.05, 0.25, 0.5, 0.75, 1]) el("text", { x: sx(t), y: 62, "text-anchor": t === 0 ? "start" : t === 1 ? "end" : "middle" }, ax).textContent = t === 0.05 ? ".05" : t;
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; box.appendChild(tip);
+  ps.forEach((p, i) => {
+    const c = el("circle", { cx: sx(p), cy: 25 + ((i % 3) - 1) * 7, r: 5, fill: css(color), stroke: css("--panel"), "stroke-width": 2 }, svg);
+    c.addEventListener("pointerenter", () => { const b = svg.getBoundingClientRect(); tip.textContent = "p = " + p.toFixed(3); tip.hidden = false; tip.style.left = (sx(p) / W * b.width) + "px"; tip.style.top = "8px"; });
+    c.addEventListener("pointerleave", () => tip.hidden = true);
+  });
+}
+drawAll();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+})();
+</script>

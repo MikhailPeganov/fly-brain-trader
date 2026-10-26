@@ -1,0 +1,26 @@
+vietnam stocks 235 first date 2015-10-09 avg tradeable 2024+ 132.4
+tokyo stocks 500 first date 2015-10-28 avg tradeable 2024+ 187.8
+nordic stocks 400 first date 2015-10-20 avg tradeable 2024+ 54.9
+aim stocks 400 first date 2015-10-19 avg tradeable 2024+ 79.4
+A {'lr': 0.01, 'step': 5, 'keep_mult': 3, 'val_t': -0.04573289466307051}
+A {'lr': 0.01, 'step': 20, 'keep_mult': 2, 'val_t': -0.754305836581442}
+B {'lr': 0.01, 'theta': 0.0, 'val_t': -3.1882781173002672}
+B {'lr': 0.01, 'theta': 0.5, 'val_t': -5.122441453469683}
+B {'lr': 0.01, 'theta': 1.0, 'val_t': -5.394470652070675}
+A {'lr': 0.03, 'step': 5, 'keep_mult': 3, 'val_t': -0.3022325654773681}
+A {'lr': 0.03, 'step': 20, 'keep_mult': 2, 'val_t': -0.5925004577280052}
+B {'lr': 0.03, 'theta': 0.0, 'val_t': -3.114990898725493}
+B {'lr': 0.03, 'theta': 0.5, 'val_t': -3.8449548389077233}
+B {'lr': 0.03, 'theta': 1.0, 'val_t': -5.292398077008305}
+LOCKED A {'lr': 0.01, 'step': 5, 'keep_mult': 3, 'val_t': -0.04573289466307051} B {'lr': 0.03, 'theta': 0.0, 'val_t': -3.114990898725493}
+vietnam A {'n_weeks': 146, 'excess_ann': -0.0895, 'excess_week': -0.0018, 'nw_t': -1.9703, 'p_viability': 0.9756, 'p_edge': 0.6962, 'null_mean_ann': -0.0708, 'null_p95_ann': -0.012, 'net_total': -0.1606, 'mkt_total': 0.0976, 'gross_excess_ann': -0.0148, 'turnover_per_rebalance': 0.186, 'avg_k': 20.0, 'avg_eligible': 132.4932}
+vietnam B {'n_events': 572, 'n_trades': 61, 'trades_per_month': 5.0833, 'excess_per_trade': -0.0609, 'gross_excess_per_trade': -0.0473, 'avg_cost': 0.0136, 'hit': 0.3934, 'buy_all_excess': -0.0202, 'nw_t': -2.4419, 'p_viability': 0.9927, 'p_edge': 0.1628, 'null_mean': -0.0673, 'null_p95': -0.0575}
+tokyo A {'n_weeks': 136, 'excess_ann': 0.0495, 'excess_week': 0.001, 'nw_t': 0.758, 'p_viability': 0.2242, 'p_edge': 0.0285, 'null_mean_ann': -0.0762, 'null_p95_ann': 0.0311, 'net_total': 0.2413, 'mkt_total': 0.0555, 'gross_excess_ann': 0.1178, 'turnover_per_rebalance': 0.1232, 'avg_k': 20.0, 'avg_eligible': 188.0074}
+tokyo B {'n_events': 1312, 'n_trades': 78, 'trades_per_month': 5.2, 'excess_per_trade': -0.0229, 'gross_excess_per_trade': -0.013, 'avg_cost': 0.0098, 'hit': 0.3718, 'buy_all_excess': -0.0211, 'nw_t': -1.777, 'p_viability': 0.9622, 'p_edge': 0.8546, 'null_mean': -0.0134, 'null_p95': 0.0024}
+nordic A {'n_weeks': 141, 'excess_ann': -0.0587, 'excess_week': -0.0012, 'nw_t': -0.9853, 'p_viability': 0.8378, 'p_edge': 0.6992, 'null_mean_ann': -0.0278, 'null_p95_ann': 0.0709, 'net_total': -0.5208, 'mkt_total': -0.4214, 'gross_excess_ann': -0.022, 'turnover_per_rebalance': 0.0409, 'avg_k': 17.9362, 'avg_eligible': 54.8298}
+nordic B {'n_events': 341, 'n_trades': 50, 'trades_per_month': 2.381, 'excess_per_trade': -0.0184, 'gross_excess_per_trade': -0.0047, 'avg_cost': 0.0137, 'hit': 0.38, 'buy_all_excess': -0.0248, 'nw_t': -0.7099, 'p_viability': 0.7611, 'p_edge': 1.0, 'null_mean': -0.0173, 'null_p95': -0.016}
+aim A {'n_weeks': 142, 'excess_ann': -0.136, 'excess_week': -0.0027, 'nw_t': -2.1012, 'p_viability': 0.9822, 'p_edge': 0.5757, 'null_mean_ann': -0.1171, 'null_p95_ann': 0.0134, 'net_total': -0.3498, 'mkt_total': -0.0465, 'gross_excess_ann': 0.0023, 'turnover_per_rebalance': 0.0574, 'avg_k': 20.0, 'avg_eligible': 79.3239}
+aim B {'n_events': 639, 'n_trades': 73, 'trades_per_month': 3.8421, 'excess_per_trade': -0.0224, 'gross_excess_per_trade': 0.0086, 'avg_cost': 0.031, 'hit': 0.3288, 'buy_all_excess': -0.0315, 'nw_t': -2.3564, 'p_viability': 0.9908, 'p_edge': 0.0578, 'null_mean': -0.0307, 'null_p95': -0.0221}
+Holm viability {'vietnam_A': 1.0, 'vietnam_B': 1.0, 'tokyo_A': 1.0, 'tokyo_B': 1.0, 'nordic_A': 1.0, 'nordic_B': 1.0, 'aim_A': 1.0, 'aim_B': 1.0}
+Holm edge {'vietnam_A': 1.0, 'vietnam_B': 0.9766046790641871, 'tokyo_A': 0.22788605697151423, 'tokyo_B': 1.0, 'nordic_A': 1.0, 'nordic_B': 1.0, 'aim_A': 1.0, 'aim_B': 0.40451909618076387}
+done 397 s

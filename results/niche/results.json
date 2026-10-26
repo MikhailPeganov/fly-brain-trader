@@ -1,0 +1,233 @@
+{
+ "prereg": "Niche-market blind test of the pain/happiness fly brain.\n\nPRE-REGISTERED (written before any 2024-26 data was simulated):\n  Markets: Vietnam HOSE, Tokyo small caps, Nordic small caps (First North proxy), UK small caps (AIM proxy)\n  Strategies: A slow picker, B shock rebound (see niche/strategies.py)\n  Periods: pre-train 2016-2021, validation 2022-2023 (choose lr and B's buy threshold, pooled\n           across markets), blind test 2024-01-02 .. 2026-10-23 with online learning, brain seed 0.\n  Question 1, VIABILITY: does the strategy beat the market of tradeable stocks after all costs?\n           One-sided Newey-West t-test on the excess-return series.\n  Question 2, MODEL EDGE: does the fly pick better than a random picker following identical rules\n           (same number of buys/sells each week for A; same number of buys among each day's\n           shocks for B)? Permutation test, net of costs.\n  Each question: 8 tests, Holm correction, family-wise alpha = 0.05.\nBUG FIX (26 Oct, after first full run): strategy B's market benchmark averaged log returns, which\n  understates an equal-weight portfolio; replaced with simple-return equal weight and rerun in full.\nDISCLOSURE: while debugging, an early version of strategy A (weekly trading, hold while in top 2K)\n  was run once on Vietnam's 2024-26 test period (it lost money). The one change made afterwards,\n  letting validation choose a lower trading frequency, is motivated by validation-period costs.\n",
+ "markets": {
+  "vietnam": "Vietnam HOSE",
+  "tokyo": "Tokyo small caps",
+  "nordic": "Nordic small caps (First North)",
+  "aim": "UK small caps (AIM)"
+ },
+ "validation_A": [
+  {
+   "lr": 0.01,
+   "step": 5,
+   "keep_mult": 3,
+   "val_t": -0.04573289466307051
+  },
+  {
+   "lr": 0.01,
+   "step": 20,
+   "keep_mult": 2,
+   "val_t": -0.754305836581442
+  },
+  {
+   "lr": 0.03,
+   "step": 5,
+   "keep_mult": 3,
+   "val_t": -0.3022325654773681
+  },
+  {
+   "lr": 0.03,
+   "step": 20,
+   "keep_mult": 2,
+   "val_t": -0.5925004577280052
+  }
+ ],
+ "validation_B": [
+  {
+   "lr": 0.01,
+   "theta": 0.0,
+   "val_t": -3.1882781173002672
+  },
+  {
+   "lr": 0.01,
+   "theta": 0.5,
+   "val_t": -5.122441453469683
+  },
+  {
+   "lr": 0.01,
+   "theta": 1.0,
+   "val_t": -5.394470652070675
+  },
+  {
+   "lr": 0.03,
+   "theta": 0.0,
+   "val_t": -3.114990898725493
+  },
+  {
+   "lr": 0.03,
+   "theta": 0.5,
+   "val_t": -3.8449548389077233
+  },
+  {
+   "lr": 0.03,
+   "theta": 1.0,
+   "val_t": -5.292398077008305
+  }
+ ],
+ "locked_A": {
+  "lr": 0.01,
+  "step": 5,
+  "keep_mult": 3,
+  "val_t": -0.04573289466307051
+ },
+ "locked_B": {
+  "lr": 0.03,
+  "theta": 0.0,
+  "val_t": -3.114990898725493
+ },
+ "locked_at": "2026-10-26 15:53:53",
+ "test": {
+  "vietnam": {
+   "A": {
+    "n_weeks": 146,
+    "excess_ann": -0.08950526014393533,
+    "excess_week": -0.0017758980187288756,
+    "nw_t": -1.9702773605444988,
+    "p_viability": 0.9755967041882698,
+    "p_edge": 0.696151924037981,
+    "null_mean_ann": -0.07077644213522835,
+    "null_p95_ann": -0.012024004468099946,
+    "net_total": -0.1606265018661508,
+    "mkt_total": 0.09760714296228401,
+    "gross_excess_ann": -0.014808927008764317,
+    "turnover_per_rebalance": 0.18595890410958904,
+    "avg_k": 20.0,
+    "avg_eligible": 132.4931506849315
+   },
+   "B": {
+    "n_events": 572,
+    "n_trades": 61,
+    "trades_per_month": 5.083333333333333,
+    "excess_per_trade": -0.06088885392990558,
+    "gross_excess_per_trade": -0.04730009823330342,
+    "avg_cost": 0.013588755696602164,
+    "hit": 0.39344262295081966,
+    "buy_all_excess": -0.020224821626686148,
+    "nw_t": -2.441865116776197,
+    "p_viability": 0.9926941976379392,
+    "p_edge": 0.16276744651069786,
+    "null_mean": -0.06729495229529826,
+    "null_p95": -0.05748120695499288
+   }
+  },
+  "tokyo": {
+   "A": {
+    "n_weeks": 136,
+    "excess_ann": 0.04949231976111414,
+    "excess_week": 0.0009819904714506774,
+    "nw_t": 0.7579766229279055,
+    "p_viability": 0.2242324888042474,
+    "p_edge": 0.02848575712143928,
+    "null_mean_ann": -0.0762250200502717,
+    "null_p95_ann": 0.03110858275256556,
+    "net_total": 0.24126366709973834,
+    "mkt_total": 0.05553677058687745,
+    "gross_excess_ann": 0.11783944423590016,
+    "turnover_per_rebalance": 0.12316176470588236,
+    "avg_k": 20.0,
+    "avg_eligible": 188.00735294117646
+   },
+   "B": {
+    "n_events": 1312,
+    "n_trades": 78,
+    "trades_per_month": 5.2,
+    "excess_per_trade": -0.022867193373067654,
+    "gross_excess_per_trade": -0.013032349189967816,
+    "avg_cost": 0.009834844183099834,
+    "hit": 0.3717948717948718,
+    "buy_all_excess": -0.0211098554033066,
+    "nw_t": -1.7770209068439125,
+    "p_viability": 0.962217599965229,
+    "p_edge": 0.854629074185163,
+    "null_mean": -0.013444943551102102,
+    "null_p95": 0.0023977729084297726
+   }
+  },
+  "nordic": {
+   "A": {
+    "n_weeks": 141,
+    "excess_ann": -0.05871424472473012,
+    "excess_week": -0.0011649651731097247,
+    "nw_t": -0.9852788090067391,
+    "p_viability": 0.837756430610914,
+    "p_edge": 0.6991504247876063,
+    "null_mean_ann": -0.027811222526182115,
+    "null_p95_ann": 0.07088056118798483,
+    "net_total": -0.5207640806589937,
+    "mkt_total": -0.42144132550743607,
+    "gross_excess_ann": -0.022044353162893195,
+    "turnover_per_rebalance": 0.04086647225768496,
+    "avg_k": 17.93617021276596,
+    "avg_eligible": 54.829787234042556
+   },
+   "B": {
+    "n_events": 341,
+    "n_trades": 50,
+    "trades_per_month": 2.380952380952381,
+    "excess_per_trade": -0.01844808758507209,
+    "gross_excess_per_trade": -0.0047468712989859,
+    "avg_cost": 0.013701216286086181,
+    "hit": 0.38,
+    "buy_all_excess": -0.024806182158845107,
+    "nw_t": -0.7098739686035993,
+    "p_viability": 0.7611088528310341,
+    "p_edge": 1.0,
+    "null_mean": -0.017334478465881997,
+    "null_p95": -0.015953663379993002
+   }
+  },
+  "aim": {
+   "A": {
+    "n_weeks": 142,
+    "excess_ann": -0.13595834111708832,
+    "excess_week": -0.0026975861332755617,
+    "nw_t": -2.1012238796305804,
+    "p_viability": 0.9821893409338787,
+    "p_edge": 0.5757121439280359,
+    "null_mean_ann": -0.11707196580062304,
+    "null_p95_ann": 0.013421058532459177,
+    "net_total": -0.34976078254142806,
+    "mkt_total": -0.04654009011536275,
+    "gross_excess_ann": 0.002272744112118698,
+    "turnover_per_rebalance": 0.05739436619718309,
+    "avg_k": 20.0,
+    "avg_eligible": 79.32394366197182
+   },
+   "B": {
+    "n_events": 639,
+    "n_trades": 73,
+    "trades_per_month": 3.8421052631578947,
+    "excess_per_trade": -0.022435719114174017,
+    "gross_excess_per_trade": 0.008589240807539597,
+    "avg_cost": 0.031024959921713613,
+    "hit": 0.3287671232876712,
+    "buy_all_excess": -0.03145700419541474,
+    "nw_t": -2.3563619813376206,
+    "p_viability": 0.9907725378685236,
+    "p_edge": 0.057788442311537694,
+    "null_mean": -0.030693270920924942,
+    "null_p95": -0.022145639272505437
+   }
+  }
+ },
+ "holm_viability": {
+  "vietnam_A": 1.0,
+  "vietnam_B": 1.0,
+  "tokyo_A": 1.0,
+  "tokyo_B": 1.0,
+  "nordic_A": 1.0,
+  "nordic_B": 1.0,
+  "aim_A": 1.0,
+  "aim_B": 1.0
+ },
+ "holm_edge": {
+  "vietnam_A": 1.0,
+  "vietnam_B": 0.9766046790641871,
+  "tokyo_A": 0.22788605697151423,
+  "tokyo_B": 1.0,
+  "nordic_A": 1.0,
+  "nordic_B": 1.0,
+  "aim_A": 1.0,
+  "aim_B": 0.40451909618076387
+ }
+}
